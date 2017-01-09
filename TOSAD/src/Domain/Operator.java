@@ -1,5 +1,6 @@
 package Domain;
 
+
 public class Operator {
 	
 	// kijkt naar de functie inbetween of de waarde tussen waardeA en waardeB ligt.
@@ -12,22 +13,15 @@ public class Operator {
 		return b;
 	}
 	
-	public boolean inRange(int waardeA,int waardeB){
-		boolean b = false;
-		if ( inRange(waardeA, waardeB)){
-			b = true;
-		}
-		return b;
-	}
-	
+	// kijkt of de waardeA groter is dan waardeB, daarnaast kijkt hij naar het type of het <= of < is.
 	public boolean biggerThen(int waardeA, int waardeB, String type){
 		boolean b = false;
-		if(type.equalsIgnoreCase("<")){
-			if(waardeA < waardeB){
+		if(type.equalsIgnoreCase(">")){
+			if(waardeA > waardeB){
 				return true;
 			}
-		} else if (type.equalsIgnoreCase("<=")){
-			if(waardeA < waardeB){
+		} else if (type.equalsIgnoreCase(">=")){
+			if(waardeA >= waardeB){
 				return true;
 			} 
 		}
@@ -41,15 +35,18 @@ public class Operator {
 				return true;
 			}
 		} else if (type.equalsIgnoreCase("<=")){
-			if(waardeA < waardeB){
+			if(waardeA <= waardeB){
 				return true;
 			} 
 		}
 		return b;
 	}
-	public boolean equalsTo(){
+	//kijkt of de waarde aan elkaar gelijk is.
+	public boolean equalsTo(String waardeA, String waardeB){
 		boolean b = false;
-		
+		if(waardeA.equalsIgnoreCase(waardeB)){
+			b = true;
+		}
 		return b;
 	}
 
