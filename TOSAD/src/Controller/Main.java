@@ -15,7 +15,7 @@ public class Main {
 		int waardeB = 20;
 		int waardeTeChecken = 19;
 		String type = ">";
-		String StringWaardeA = "blabla";
+		String StringWaardeA = "bla";
 		String StringWaardeB = "blabla";
 	
 		// in between test
@@ -30,10 +30,14 @@ public class Main {
 		type = "<=";
 		System.out.println("is de waarde " + waardeTeChecken + " kleiner dan " + waardeB + " = " + o.lowerThen(waardeTeChecken, waardeB, type));
 	
-		
+		//StringwaardeA = "blabla";
 		//equals test
 		System.out.println("is de waarde gelijk? " + o.equalsTo(StringWaardeA, StringWaardeB));
 		
+		// StringWaardeA = "test"; StringWaardeB = "test";
+		//equals test
+		System.out.println("is de waarde gelijk? " + o.notEqualsTo(StringWaardeA, StringWaardeB));
+				
 	}
 
 }

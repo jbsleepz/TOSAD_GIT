@@ -49,5 +49,12 @@ public class Operator {
 		}
 		return b;
 	}
+	public boolean notEqualsTo(String waardeA, String waardeB){
+		boolean b = false;
+		if(!waardeA.equalsIgnoreCase(waardeB)){
+			b = true;
+		}
+		return b;
+	}
 
 }
