@@ -2,14 +2,14 @@ package DAO;
 
 public interface DAOInterface {
 	
-	boolean createTable();
+	void createTable();
 
-	boolean dropTable();
+	void dropTable();
 
-	boolean insert(String waarde);
+	void insert(String waarde);
 
-	boolean deleteByPK(String selectPK);
+	void deleteByPK(String selectPK);
 
-	boolean updateByPK(String selectPK, String waarde);
+	void updateByPK(String selectPK, String waarde);
 
 }
