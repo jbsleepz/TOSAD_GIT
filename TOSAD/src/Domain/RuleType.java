@@ -1,5 +1,6 @@
 package Domain;
 
-public class RuleType {
-
+public abstract class RuleType {
+	
+	
 }

@@ -5,8 +5,6 @@ import Domain.Operator;
 public class Main {
 	public static void main(String[] args){
 		
-		
-		
 		//testen voor operator klasse
 		System.out.println("Test Operator klassen.");
 		Operator o = new Operator();

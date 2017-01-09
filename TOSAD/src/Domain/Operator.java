@@ -1,6 +1,6 @@
 package Domain;
 
-
+//in deze klasse hebben we nu methodes staan om een operator te simuleren.
 public class Operator {
 	
 	// kijkt naar de functie inbetween of de waarde tussen waardeA en waardeB ligt.
