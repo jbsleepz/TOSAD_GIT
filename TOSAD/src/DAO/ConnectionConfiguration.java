@@ -7,13 +7,14 @@ import java.sql.SQLException;
 //zet de databaseConnectie op met de locale database.
 // moet nog worden gewijzigd naar de database die wij gaan gebruiken voor project.
 public class ConnectionConfiguration {
-	public static String dbSchemeName = "TOSAD", connectionURL = "jdbc:mysql://localhost:3306/" + dbSchemeName,
-			username = "root", password = "joukebouwe";
+	public static String dbSchemeName = "tosad_2016_2C_team3", 
+			connectionURL = "ondora02.hu.nl" + dbSchemeName,
+			username = "tosad_2016_2C_team3", password = "pizza";
 
 	public static Connection getConnection() {
 		Connection connection = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("oralce.jdbc.driver.OracleDriver").newInstance();
 			connection = DriverManager.getConnection(connectionURL, username, password);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
