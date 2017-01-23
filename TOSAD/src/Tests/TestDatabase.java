@@ -17,7 +17,8 @@ public class TestDatabase extends ConnectionConfiguration {
 	private static final String DB_PORT = "8080";
 	private static final String DB_PASS = "pizza";
 	private static Connection conn;
-	private static final String connectieString = "jdbc:oracle:thin:tosad_2016_2C_team3/tosad_2016_2C_team3@//ondora02.hu.nl:8521/cursus02.hu.nl";
+	private static final String connectieString = "jdbc:oralce:thin:tosad_2016_2c_team3/tosad_2016_2c_team3@//ondora02.hu.nl:8521/cursus02.hu.nl";
+	"jdbc:oracle:thin:tosad_2016_2C_team3/pizza@//ondora02.hu.nl:8521/cursus02.hu.nl";		  
 	
 /*	String dbSchemeName = "tosad_2016_2C_team3", 
 			connectionURL = "ondora02.hu.nl" + dbSchemeName,
@@ -44,18 +45,16 @@ public class TestDatabase extends ConnectionConfiguration {
 		// Een eerste SQL statement maken
 		Statement stmt = conn.createStatement();		
 		// Een tweede statement maken dat een resultaat oplevert
-		String queryText = "SELECT testData FROM testData";
+		String queryText = "SELECT TESTDATA FROM TESTDATA";
 		
 		// Een tweede statement uitvoeren
 		ResultSet rs = stmt.executeQuery(queryText);
 		
 		// Iets doen met de resultaten
-		int id;
 		String naam;
 		while (rs.next()) {   
-			id = rs.getInt("id");	
-			naam = rs.getString("naam");
-			System.out.println(id + ", " + naam);
+			naam = rs.getString("testData");
+			System.out.println(naam + ", " + naam);
 		}
 
 		// De resultset, het statement en de verbinding sluiten
