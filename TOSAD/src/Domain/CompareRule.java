@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class CompareRule extends RuleType {
 	private String script;
 	Operator operator;
+	int i = 1;
 	Object o; // type of businessrule ( because there is no super class )
 	// String attribute;
 	// String compareAttribute;
@@ -60,10 +61,11 @@ public class CompareRule extends RuleType {
 				 " \nDECLARE" + 
 				 " \nCOLUMNNAME VARCHAR2" + // columnName (Value of an attribute of a new record)
 				 " \nCHECKVALUE VARCHAR2" + // check record input value with THIS VALUE
-				 " \nBEGIN" + " \nCOLUMNNAME := :NEW.COMPAREVALUE" + 
-				 " \nCHECKVALUE := " + checkValue +
-				 " \nIF (COLUMNNAME " + operator + 
-				 " CHECKVALUE)= FALSE" + " \nTHEN"+ 
+				 " \nBEGIN" + 
+				 " \nCOLUMNNAME := :NEW.COMPAREVALUE" + 
+				 " \nCHECKVALUE := " + checkValue + 
+				 " \nIF (COLUMNNAME " + operator + " CHECKVALUE)= FALSE" + 
+				 " \nTHEN"+ 
 				 " \nRAISE_APPLICATION_ERROR(20002, 'The given value is not valid')" + // error message
 				 " \nEND;";
 
@@ -80,13 +82,16 @@ public class CompareRule extends RuleType {
 				 " \nFOR EACH ROW" +
 				 " \nDECLARE";
 		for(String name : columnNames){
-			int i = 1;
-			script += " \nSTRING" + i + " := "+ name;
+
+			script += " \nSTRING" + i + " := "+ name + " VARCHAR2";
 			i+=1;
 		}
 		
-		script += " \nBEGIN" + 
-				  " \n";
+		script += " \nBEGIN";
+		
+		for(String name : columnNames){
+			script += " \nSTRING" + i + " := "+ name + " :NEW." + name;
+		}
 
 		return script;
 	}

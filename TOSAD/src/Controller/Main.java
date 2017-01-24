@@ -10,9 +10,7 @@ import Domain.RangeRule;
 public class Main {
 	public static void main(String[] args){
 		
-/*		System.out.println("Doet iets");*/
-		
-		System.out.println("werkt dit nou of wat?");
+
 		
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("een");
