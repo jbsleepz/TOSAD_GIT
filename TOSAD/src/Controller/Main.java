@@ -1,17 +1,28 @@
 package Controller;
 
+import java.util.ArrayList;
+
+import Domain.Attribute;
+import Domain.CompareRule;
 import Domain.Operator;
 import Domain.RangeRule;
 
 public class Main {
 	public static void main(String[] args){
 		
-		System.out.println("Doet iets");
+/*		System.out.println("Doet iets");*/
 		
-		//dit is een test van scriptoutput
-		RangeRule r = new RangeRule(123, 234);
-		String testScript = r.CreateRangeRuleScript("ATTRIBUTERANGERULE", "TEST", r.getMinValue(), r.getMaxValue());
-		System.out.println(testScript);
+		System.out.println("werkt dit nou of wat?");
+		
+		ArrayList<String> al = new ArrayList<String>();
+		al.add("een");
+		al.add("twee");
+		
+		CompareRule c = new CompareRule();
+		String testScript1 = c.createAttributeCompareScript("test_name", "test_table", "test_value", ">");
+		System.out.println(testScript1);
+		
+		
 				
 	}
 
