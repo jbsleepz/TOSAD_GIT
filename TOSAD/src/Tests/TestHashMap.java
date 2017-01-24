@@ -2,7 +2,10 @@ package Tests;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class TestHashMap {
 
@@ -16,5 +19,22 @@ public class TestHashMap {
 		
 		System.out.println(m1.keySet()); 
 		System.out.println(m1.values()); 
+		
+		
+		SortedMap sm = new TreeMap();
+		sm.put("map", "TreeMap");
+		sm.put("schildt", "java2");
+		sm.put("mathew", "Hyden");
+		sm.put("schildt", "java2s");
+		System.out.println(sm.keySet()); 
+		System.out.println(sm.values());
+
+		LinkedHashMap lm = new LinkedHashMap();
+		lm.put("map", "LinkedHashMap");
+		lm.put("schildt", "java2");
+		lm.put("mathew", "Hyden");
+		lm.put("schildt", "java2s");
+		System.out.println(lm.keySet()); 
+		System.out.println(lm.values());
 	}
 }
