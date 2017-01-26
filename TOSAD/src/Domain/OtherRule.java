@@ -2,7 +2,6 @@ package Domain;
 
 public class OtherRule extends RuleType {
 	String sqlQuery;
-	Operator operator = new Operator();
 	
 	public OtherRule(String sql) {
 		this.sqlQuery = sql;
@@ -20,7 +19,7 @@ public class OtherRule extends RuleType {
 				" \nVALUE VARCHAR2" +
 				" \nBEGIN" +
 				" \nVALUE := :NEW." + columnName + ";" +
-				" \nIF ((" + columnName + " " + operator + " " + sql + ")" + "IS FALSE)" +
+				" \nIF (" + columnName + " " + operator + " " + sql + ") = FALSE" +
 				" \nTHEN " +
 				" \nRaise_Application_Error(-20000, 'minimum value is not a valid number');" +
 				" \nEND IF;" +
