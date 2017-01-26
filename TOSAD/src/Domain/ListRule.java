@@ -35,11 +35,11 @@ public class ListRule extends RuleType{
 		int counter = 1;
 		for(String s : listValues){
 			if(counter == length){
-				list += s; // there is not an extra "," needed if it is the last item from the list
+				list += "'" + s +"'"; // there is not an extra "," needed if it is the last item from the list
 				break;
 			}
 			else{
-				list += s + ", ";
+				list += "'" + s + "', ";
 				counter +=1;
 			}
 			
@@ -52,9 +52,9 @@ public class ListRule extends RuleType{
 						"\nCOLUMNVALUE VARCHAR2" +
 						"\nBEGIN" + 
 						"\nCOLUMNVALUE := NEW." + columnName +  //the new value will be stored in here
-						"\nIF INSTR('"+list + "', COLUMNVALUE) < 1" + //if given value IS NOT part of the list
+						"\nIF INSTR("+list + ", COLUMNVALUE) < 1" + //if given value IS NOT part of the list
 						"\nTHEN" +
-						"\nRAISE_APPLICATION_ERROR(20003,'the given value must be one of the following: '"+list+"  )" +
+						"\nRAISE_APPLICATION_ERROR(20003,'the given value must be one of the following: "+list+"  )" +
 						"\nEND IF" +
 						"\nEND";
 		
