@@ -5,7 +5,7 @@ public class RangeRule extends Type{
 	int minimumValue = 0;
 	int maximumValue = 0;
 	
-	Operator operator;
+
 	
 	
 	public RangeRule(int min, int max){  // creating the rangerule-object

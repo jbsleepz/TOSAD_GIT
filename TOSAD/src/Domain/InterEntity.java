@@ -8,7 +8,7 @@ public class InterEntity extends Rule{
 	private String table2;
 	private ArrayList attributesTable1;
 	private ArrayList attributesTable2;
-	private RuleType ruleType;
+	private RuleType ruleType = new RuleType();
 	
 	public InterEntity(){
 		
@@ -39,5 +39,9 @@ public class InterEntity extends Rule{
 	
 	public ArrayList getAttributesTable2(){
 		return attributesTable2;
+	}
+	
+	public RuleType getRuleType(){
+		return ruleType;
 	}
 }

@@ -24,6 +24,10 @@ public class BusinessruleType {
 			rule = new Modify();
 		}
 	}
+	
+	public Rule getRule(){
+		return rule;
+	}
 
 
 

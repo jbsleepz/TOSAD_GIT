@@ -19,9 +19,7 @@ public class Domain_Facade_Interface_Impl implements Domain_Facade_Interface{
 	public void setbusinessRuleTypeToBusinessRule(String type){
 		this.Businessrule.setBusinessRuleType(type);
 	}
-	@Override
-	public void GenerateBusinessrule(RuleType rT) {
-		// TODO Auto-generated method stub
+
 		
 	}
 

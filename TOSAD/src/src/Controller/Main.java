@@ -28,6 +28,7 @@ public class Main extends HttpServlet {
 	public int Rangemax;
 	public String TableName;
 	public String ColumnName;
+	Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
@@ -38,8 +39,9 @@ public class Main extends HttpServlet {
 			Rangemax = Integer.parseInt(req.getParameter("MaxValue"));
 			
 			RuleName = req.getParameter("RuleName");
-			Domain_Facade_Interface_Impl Facade = new Domain_Facade_Interface_Impl();
-			Facade.setAttributeRangeRule(TableName, ColumnName);
+			Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
+			facade.setbusinessRuleTypeToBusinessRule("Attribute");
+			
 					
 					
 		}
@@ -51,7 +53,7 @@ public class Main extends HttpServlet {
 			RuleName = req.getParameter("RuleName");
 			Value = req.getParameter("CheckValue");
 			Operator = req.getParameter("Operator");
-			Domain_Facade_Interface_Impl Facade = new Domain_Facade_Interface_Impl();
+			
 			CompareRule c = new CompareRule();
 			output = c.createAttributeCompareScript(RuleName, "test_table", Value, Operator);		
 		}

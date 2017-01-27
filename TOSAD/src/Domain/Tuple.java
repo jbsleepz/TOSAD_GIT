@@ -7,7 +7,7 @@ public class Tuple extends Rule{
 	private String tabelName;
 	private ArrayList attributes;
 	private ArrayList tableNameList;
-	private RuleType ruleTyp;
+	private RuleType ruleType = new RuleType();
 	
 	public Tuple(){
 		

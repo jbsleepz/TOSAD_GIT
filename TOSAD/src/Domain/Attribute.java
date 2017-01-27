@@ -4,7 +4,7 @@ public class Attribute extends Rule{
 	private String name = "attribute";
 	private String tableName;
 	private String attributeName;
-	private RuleType ruleType;
+	private RuleType ruleType = new RuleType();
 	
 	public Attribute(){
 		
