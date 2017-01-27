@@ -48,11 +48,13 @@ public class Main extends HttpServlet {
 			
 			
 			//create object and script
+
 			facade.setRuleToBusinessRuleType("Attribute"); //set the businessrule to Attribute
 			facade.setTypeToRuleType("RangeRule"); // set type of rule to RangeRule
 			facade.setAttributesOfAttribute(tableName, columnName); // fill the businessrule with attributes
 			facade.setAttributesOfRangeRule(rangeMin, rangeMax, operator); // fill the type of the businessrule
-			String = facade.createAttributeRangeRuleScript(facade.getRuleType().
+			
+			String script = facade.createAttributeRangeRuleScript(RuleName);
 			
 					
 					

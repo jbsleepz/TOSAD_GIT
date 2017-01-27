@@ -1,6 +1,6 @@
 package Domain;
 
-public class Type {
+public abstract class Type {
 	String name;
 	private int min;
 	private int max;
@@ -11,8 +11,8 @@ public class Type {
 		this.max = max;
 		this.operator = operator;
 	}
-	public String CreateRangeRuleScript(String tableName,String triggerName, String columnname, int minimumValue, int maximumValue, String Operator){
+/*	public String CreateRangeRuleScript(String tableName,String triggerName, String columnname, int minimumValue, int maximumValue, String Operator){
 		
-	}
+	}*/
 
 }

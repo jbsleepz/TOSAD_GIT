@@ -9,19 +9,22 @@ public class Businessrule {
 	private BusinessruleType businessruleType = new BusinessruleType();
 
 	
-	public Businessrule(){
-		
+	public Businessrule(String ruleName){
+		this.ruleName = ruleName;
 	}
 	
-	public void setRuleName(String name){
-		this.ruleName = name;
+	public String getRuleName(){
+		return ruleName;
 	}
+	
+
 	
 	
 	public void setBusinessRuleType(String rule){
 		businessruleType.setTypeToBusinessruleType(ruleName);
 		
 	}
+	
 	
 	public BusinessruleType getBusinessRuleType(){
 		return businessruleType;

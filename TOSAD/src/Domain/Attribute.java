@@ -7,7 +7,7 @@ public class Attribute extends Rule{
 	private RuleType ruleType = new RuleType();
 	
 	public Attribute(){
-		
+		super();
 	}
 	
 	
@@ -38,4 +38,3 @@ public class Attribute extends Rule{
 	}
 	
 }
-
