@@ -2,11 +2,16 @@ package Domain;
 
 import java.util.ArrayList;
 
-public class Tuple {
+public class Tuple extends Rule{
 	private String name = "tuple";
 	private String tabelName;
 	private ArrayList attributes;
 	private ArrayList tableNameList;
+	private RuleType ruleTyp;
+	
+	public Tuple(){
+		
+	}
 	
 	public Tuple(String tabelName){
 		this.tabelName = tabelName;
@@ -23,5 +28,9 @@ public class Tuple {
 	
 	public ArrayList getAttributeList(){
 		return attributes;
+	}
+	
+	public RuleType getRuleType(){
+		return ruleType;
 	}
 }

@@ -2,61 +2,20 @@ package Domain;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class CompareRule extends RuleType {
 	private String script;
 	Operator operator;
 	int i = 1;
-	Object o; // type of businessrule ( because there is no super class )
-	// String attribute;
-	// String compareAttribute;
 
-	// compare rules om rekening mee te houden :
-	// - attribute
-	// -- heeft 2 gelijkwaardige types nodig
-	//
-	//
-	// - tuple
-	// -- 2 tuples met minimaal 2 waardes.
-	// -- zelf de operator bepalen
-	// -- kunnen meerdere tabellen zijn
-	//
-	//
-	// - inter-entity
-	//
 
-	/*
-	 * public CompareRule(String attribute, String compareAttribute){ // for
-	 * attributeCompareRule this.attribute = attribute; this.compareAttribute =
-	 * compareAttribute; }
-	 */
-
-	/*
-	 * public String CreateCompareruleScript(String ruleName, String operator ){
-	 * 
-	 * String script = "";
-	 * 
-	 * if (ruleName.equals("attribute")){ //1 tabel //1 kolom //1 inputwaarde
-	 * van gebruiker
-	 * 
-	 * 
-	 * } else if(ruleName.equals("tuple")){ //1 tabel //minimaal 2 kolommen //
-	 * vergelijken met inputwaardes
-	 * 
-	 * } else if (ruleName.equals("interEntity")){ //2 of meer tabellen ( bijv
-	 * foreignkey constraint
-	 * 
-	 * 
-	 * } return script; }
-	 */
 
 	// this method only works if the values to be compared are "Strings"
 	public String createAttributeCompareScript(String triggerName, String tableName, String columnName,  String checkValue,String operator) { // attribute
-		// 1 tabel
-		// 1 kolom
-		// 1 inputwaarde van gebruiker
+		// 1 table
+		// 1 column
+		// 1 value from user input
 		script = "CREATE OR REPLACE TRIGGER " + "TRIGGER_" + triggerName + 
 				 " \nBEFORE INSERT OR UPDATE ON " + tableName +  
 				 " \nFOR EACH ROW" + 
@@ -75,9 +34,9 @@ public class CompareRule extends RuleType {
 	}
 
 	public String createTupleComparesScript(String triggerName, String tableName, ArrayList<String> columnNames, String operator) { // tuple
-		// 1 tabel
-		// 2 kolommen
-		// vergelijken met inputwaardes
+		// 1 table
+		// 2 columns
+		// compare with user input
 		script = "CREATE OR REPLACE TRIGGER " + "Trigger" + triggerName +
 				 " \nBEFORE INSERT OR UPDATE ON " +tableName + 
 				 " \nFOR EACH ROW" +
@@ -104,26 +63,33 @@ public class CompareRule extends RuleType {
 		return script;
 	}
 
-	Map m1 = new HashMap();
 	
 
-	public String createInterEntityCompareScript(String triggerName, HashMap m1) {// Inter-Entity
-		//2 tabellen
-		//1 kolom per tabel
-		//operator ertussen
-		
-		//first pair (key, value) of HashMap key = tableName
-
-		m1.put("map", "HashMap");
-		m1.put("schildt", "java2");
-
+	public String createInterEntityCompareScript(String triggerName,String tableName, String column, String tableName2, String column2, String operator ) {// Inter-Entity
+		// kies tabel voor de trigger
+		// kies de kolom van die tabel
+		// kies targetkolom
+		// kies target kolom van tabel
+		//vergelijk niewwaarde tabel met target kolom van target tabel
+		// anders...exceptions
 
 		
-		String tableName;
+
 		
 		script = "CREATE OR REPLACE TRIGGER trigger_" + triggerName +  
 				 "\nBEFORE INSERT OR UPDATE ON " + tableName + 
-				 " ";
+				 "\nFOR EACH ROW" +
+				 "\nDECLARE" +
+				 "\nCOLUMNVALUE VARCHAR2" + //value of item in tableName
+				 "\nTARGETCOLUMN VARCHAR2" + 
+				 "\nBEGIN" +
+				 "\nCOLUMNVALUE := NEW." + column +  // new value to be compared with.. column of target tablecolumn
+				 "\nSELECT :NEW." + column2 + " FROM " + tableName2 + " INTO TARGETCOLUMN" +
+				 "\nIF (COLUMNVALUE " + operator + " TARGETCOLUMN ) = FALSE" +
+				 "\nTHEN" +
+				 "\nRAISE_APPLICATION_ERROR(20004, 'The given value is not valid')"+
+				 "\nEND IF" +
+				 "\nEND";
 
 		return script;
 	}

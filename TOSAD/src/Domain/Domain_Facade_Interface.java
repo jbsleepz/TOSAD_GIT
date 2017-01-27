@@ -1,8 +1,12 @@
 package Domain;
 
+import Domain.Businessrule;
+import Domain.RuleType;
+
 public interface Domain_Facade_Interface {
 
-	public RuleType ReturnBusinessruleObject(int rule_id, String tableName);
+	public Businessrule ReturnBusinessruleObject();
+	public void setbusinessRuleTypeToBusinessRule(String type);
 	public void GenerateBusinessrule(RuleType rT);
 	
 	

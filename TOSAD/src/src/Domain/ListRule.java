@@ -2,14 +2,13 @@ package Domain;
 
 import java.util.ArrayList;
 
-public class ListRule extends RuleType{
+public class ListRule extends Type{
 	Operator operator = new Operator();
 	private String stringValues;
 	private ArrayList<String> listValues = new ArrayList<String>();
 
 	
-	public ListRule(String stringValues){
-		this.stringValues = stringValues;
+	public ListRule(){
 	}
 	
 	

@@ -1,16 +1,19 @@
 package Domain;
 
 public class Domain_Facade_Interface_Impl implements Domain_Facade_Interface{
-	public Businessrule Businessrule;
+	private Businessrule Businessrule;
+
+	public Domain_Facade_Interface_Impl(){
+		Businessrule = new Businessrule();
+	}
+	
 	@Override
 	public Businessrule ReturnBusinessruleObject() {
 		 return Businessrule;
 	}
-	public Domain_Facade_Interface_Impl(){
-		Businessrule = new Businessrule();
-	}
-	public void setAttributeRangeRule(String TableName,String ColumnName){
-		
+	
+	public void setbusinessRuleTypeToBusinessRule(String type){
+		this.Businessrule.
 	}
 	@Override
 	public void GenerateBusinessrule(RuleType rT) {

@@ -1,14 +1,12 @@
-package Domain;
+package src.Domain;
 
-public class Attribute extends Rule{
+import Domain.BusinessruleType;
+
+public class Attribute extends BusinessruleType{
 	private String name = "attribute";
 	private String tableName;
 	private String attributeName;
 	private RuleType ruleType;
-	
-	public Attribute(){
-		
-	}
 	
 	
 	public Attribute (String tableName, String attributeName){
@@ -28,9 +26,6 @@ public class Attribute extends Rule{
 		return attributeName;
 	}
 	
-	public RuleType getRuleType(){
-		return ruleType;
-	}
 	
 }
 
