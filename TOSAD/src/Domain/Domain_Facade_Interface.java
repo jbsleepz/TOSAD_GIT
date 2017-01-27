@@ -7,7 +7,7 @@ public interface Domain_Facade_Interface {
 
 	public Businessrule ReturnBusinessruleObject();
 	public void setRuleToBusinessRuleType(String type);
-
+	public void setAttributesOfAttribute(String tableName, String columnName, int angeMin, int rangeMax, String operator);
 	
 	
 	

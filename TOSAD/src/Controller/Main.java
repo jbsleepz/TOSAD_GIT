@@ -23,11 +23,11 @@ public class Main extends HttpServlet {
 	
 	public String RuleName;
 	public String Value;
-	public String Operator;
-	public int Rangemin;
-	public int Rangemax;
-	public String TableName;
-	public String ColumnName;
+	public String operator;
+	public int rangeMin;
+	public int rangeMax;
+	public String tableName;
+	public String columnName;
 	Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -38,12 +38,20 @@ public class Main extends HttpServlet {
 		
 		
 		if(Ruletype.equals("AttributeRangeRule")){
-			Rangemin = Integer.parseInt(req.getParameter("MinValue"));
-			Rangemax = Integer.parseInt(req.getParameter("MaxValue"));
-			
+			//obtain all atttributes from request
+			rangeMin = Integer.parseInt(req.getParameter("MinValue"));
+			rangeMax = Integer.parseInt(req.getParameter("MaxValue"));
+			tableName = req.getParameter("TableName");
+			columnName =  req.getParameter("ColumnName");			
 			RuleName = req.getParameter("RuleName"); //trigger name
-			facade.setRuleToBusinessRuleType("Attribute");
-			facade.setTypeToRuleType("RangeRule");
+			operator = req.getParameter("Operator");
+			
+			
+			//create object and script
+			facade.setRuleToBusinessRuleType("Attribute"); //set the businessrule to Attribute
+			facade.setTypeToRuleType("RangeRule"); // set type of rule to RangeRule
+			facade.setAttributesOfAttribute(tableName, columnName, rangeMin, rangeMax, operator); // fill the businessrule with attributes
+			
 			
 					
 					
@@ -52,14 +60,14 @@ public class Main extends HttpServlet {
 			output = "no script avaible";
 		}
 		
-		if(Ruletype.equals("AttributeCompareRule")){
+	/*	if(Ruletype.equals("AttributeCompareRule")){
 			RuleName = req.getParameter("RuleName");
 			Value = req.getParameter("CheckValue");
 			Operator = req.getParameter("Operator");
 			
 			CompareRule c = new CompareRule();
 			output = c.createAttributeCompareScript(RuleName, "test_table", Value, Operator);		
-		}
+		}*/
 		
 		if(Ruletype.equals("AttributeListRule")){
 			String test  = "bla asd nogeen string";

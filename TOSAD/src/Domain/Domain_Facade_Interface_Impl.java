@@ -24,6 +24,10 @@ public class Domain_Facade_Interface_Impl implements Domain_Facade_Interface{
 		Businessrule.getBusinessRuleType().setTypeToBusinessruleType(typeName);
 	}
 
+    public void setAttributesOfAttribute(String tableName, String columnName, int rangeMin, int rangeMax, String operator){
+    	this.Businessrule.
+    }
+
 
 
 }

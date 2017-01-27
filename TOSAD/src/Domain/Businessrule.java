@@ -1,7 +1,6 @@
 package Domain;
 
 import Domain.BusinessruleType;
-import src.Domain.RuleType;
 
 public class Businessrule {
 	private String ruleName;
