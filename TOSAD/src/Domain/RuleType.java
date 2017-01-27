@@ -8,6 +8,10 @@ public class RuleType {
 		
 	}
 	
+	public Type getType(){
+		return type;
+	}
+	
 	
 	
 }

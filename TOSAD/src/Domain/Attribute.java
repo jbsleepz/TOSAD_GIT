@@ -32,5 +32,10 @@ public class Attribute extends Rule{
 		return ruleType;
 	}
 	
+	public void setAttributes(String tableName, String attributeName){
+		this.tableName = tableName;
+		this.attributeName = attributeName;
+	}
+	
 }
 

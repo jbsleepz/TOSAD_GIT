@@ -21,7 +21,7 @@ public class RangeRule extends Type{
 		return maximumValue;
 	}
 	
-	public String CreateRangeRuleScript(String tableName,String triggerName, String columnname, int minimumValue, int maximumValue){
+	public String CreateRangeRuleScript(String tableName,String triggerName, String columnname, int minimumValue, int maximumValue, String Operator){
 		String script1 = ""/*"CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 						" \nBEFORE INSERT OR UPDATE ON " + tableName + 
 						" \nFOR EACH ROW" +
@@ -49,7 +49,7 @@ public class RangeRule extends Type{
 				" \nVALUE NUMBER" +
 				" \nBEGIN"+ 
 				" \nVALUE := :NEW." + columnname + ";" +
-				" \nIF (VALUE NOT BETWEEN " + minimumValue + " AND " + maximumValue + ")" + 
+				" \nIF (VALUE NOT "+ Operator + " " + minimumValue + " AND " + maximumValue + ")" + 
 				" \nTHEN " + 
 				" \nRaise_Application_Error(-20000, 'minimum value is not a valid number');" +
 				" \nEND IF;" +
