@@ -4,7 +4,7 @@ package Domain;
 import java.util.ArrayList;
 
 
-public class CompareRule extends RuleType {
+public class CompareRule extends Type {
 	private String script;
 	Operator operator;
 	int i = 1;

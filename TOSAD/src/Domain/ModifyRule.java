@@ -1,5 +1,5 @@
 package Domain;
 
-public class ModifyRule extends RuleType{
+public class ModifyRule extends Type{
 	Operator operator = new Operator();
 }

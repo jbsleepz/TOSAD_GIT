@@ -1,51 +1,93 @@
 package Controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import Domain.Attribute;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import Domain.CompareRule;
+import Domain.Domain_Facade_Interface_Impl;
 import Domain.ListRule;
-import Domain.Operator;
 import Domain.RangeRule;
 
-public class Main {
-	public static void main(String[] args){
-		
-		
-		
-		
-	/*	
-		
-		RangeRule r = new RangeRule(12, 123);
-		String script = r.CreateRangeRuleScript("een_table", "een_name", "column_name" , r.getMinValue(), r.getMaxValue());
-		System.out.println(script);
-		
-		
-		*/
 
+
+public class Main extends HttpServlet {
+	public String output;
+	
+	public String Ruletype;
+	
+	public String RuleName;
+	public String Value;
+	public String Operator;
+	public int Rangemin;
+	public int Rangemax;
+	public String TableName;
+	public String ColumnName;
+	Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			 throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		Ruletype = req.getParameter("RuleType");
+		if(Ruletype.equals("AttributeRangeRule")){
+			Rangemin = Integer.parseInt(req.getParameter("MinValue"));
+			Rangemax = Integer.parseInt(req.getParameter("MaxValue"));
+			
+			RuleName = req.getParameter("RuleName");
+			Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
+			facade.setbusinessRuleTypeToBusinessRule("Attribute");
+			facade.setTypeToRuleType("RangeRule");
+			
+					
+					
+		}
+		if(Ruletype.equals("AttributeOtherRule")){
+			output = "no script avaible";
+		}
 		
-	/*	ArrayList<String> al = new ArrayList<String>();
-		al.add("een");
-		al.add("twee");
+		if(Ruletype.equals("AttributeCompareRule")){
+			RuleName = req.getParameter("RuleName");
+			Value = req.getParameter("CheckValue");
+			Operator = req.getParameter("Operator");
+			
+			CompareRule c = new CompareRule();
+			output = c.createAttributeCompareScript(RuleName, "test_table", Value, Operator);		
+		}
 		
-		CompareRule c = new CompareRule();
-		//String testScript1 = c.createAttributeCompareScript("test_name", "test_table", "test_value", ">");
-		//System.out.println(testScript1);
+		if(Ruletype.equals("AttributeListRule")){
+			String test  = "bla asd nogeen string";
+			String ruleName = req.getParameter("RuleName");
+			ListRule l = new ListRule(test);
+			ArrayList<String> listValues = l.stringToListParser(test);	
+			output = l.createAttributeListRuleScript(ruleName, "Some_table", "Some_Column", listValues);
+		}
 		
-		String s = c.createTupleComparesScript("test_name", "test_table", al, ">");
-		//System.out.println(s);
-		*/
+		if(Ruletype.equals("TupleOtherRule")){
+			output = "no script avaible";
+		}
 		
+		if(Ruletype.equals("TupleCompareRule")){
+			
+			output = "no script avaible";
+		}
 		
-		//testing listrule parser
-		String test  = "bla asd nogeen string";
-		ListRule l = new ListRule(test);
-		ArrayList<String> listValues = l.stringToListParser(test);	
-		String sc = l.createAttributeListRuleScript("ListRule", "Some_table", "Some_Column", listValues);
-		System.out.println(sc);
+		if(Ruletype.equals("interCompareRule")){
+			output = "no script avaible";
+		}
 		
+		if(Ruletype.equals("entityOtherRule")){
+			output = "no script avaible";
+		}
 		
-		
+		if(Ruletype.equals("ModifyRule")){
+			output = "no script avaible";
+		}
+		out.print(output);
+			
 	}
-
 }
