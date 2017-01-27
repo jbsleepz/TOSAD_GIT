@@ -19,7 +19,10 @@ public class Domain_Facade_Interface_Impl implements Domain_Facade_Interface{
 	public void setbusinessRuleTypeToBusinessRule(String type){
 		this.Businessrule.setBusinessRuleType(type);
 	}
-
+	
+	public void setTypeToRuleType(String typeName){
 		
 	}
+
+}
 

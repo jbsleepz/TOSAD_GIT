@@ -41,6 +41,7 @@ public class Main extends HttpServlet {
 			RuleName = req.getParameter("RuleName");
 			Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
 			facade.setbusinessRuleTypeToBusinessRule("Attribute");
+			facade.setTypeToRuleType("RangeRule");
 			
 					
 					
