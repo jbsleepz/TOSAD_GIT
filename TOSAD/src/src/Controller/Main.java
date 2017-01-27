@@ -34,13 +34,16 @@ public class Main extends HttpServlet {
 			 throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		Ruletype = req.getParameter("RuleType");
+		
+		
+		
 		if(Ruletype.equals("AttributeRangeRule")){
 			Rangemin = Integer.parseInt(req.getParameter("MinValue"));
 			Rangemax = Integer.parseInt(req.getParameter("MaxValue"));
 			
-			RuleName = req.getParameter("RuleName");
+			RuleName = req.getParameter("RuleName"); //trigger name
 			Domain_Facade_Interface_Impl facade = new Domain_Facade_Interface_Impl();
-			facade.setbusinessRuleTypeToBusinessRule("Attribute");
+			facade.setRuleToBusinessRuleType("Attribute");
 			facade.setTypeToRuleType("RangeRule");
 			
 					

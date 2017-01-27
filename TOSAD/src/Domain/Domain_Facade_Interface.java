@@ -6,7 +6,7 @@ import Domain.RuleType;
 public interface Domain_Facade_Interface {
 
 	public Businessrule ReturnBusinessruleObject();
-	public void setbusinessRuleTypeToBusinessRule(String type);
+	public void setRuleToBusinessRuleType(String type);
 
 	
 	

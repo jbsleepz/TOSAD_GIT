@@ -20,8 +20,12 @@ public class Businessrule {
 	
 	
 	public void setBusinessRuleType(String rule){
-		businessruleType.setRuleToBusinessruleType(ruleName);
+		businessruleType.setTypeToBusinessruleType(ruleName);
 		
+	}
+	
+	public BusinessruleType getBusinessRuleType(){
+		return businessruleType;
 	}
 	
 }

@@ -7,7 +7,7 @@ public class BusinessruleType {
 		
 	}
 
-	public void setRuleToBusinessruleType(String ruleName){
+	public void setTypeToBusinessruleType(String ruleName){
 		if(ruleName.equals("Attribute")){
 			rule = new Attribute();
 		}
