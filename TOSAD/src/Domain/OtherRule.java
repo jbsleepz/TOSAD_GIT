@@ -21,10 +21,32 @@ public class OtherRule extends Type {
 				" \nVALUE := :NEW." + columnName + ";" +
 				" \nIF (" + columnName + " " + operator + " " + sql + ") = FALSE" +
 				" \nTHEN " +
-				" \nRaise_Application_Error(-20000, 'minimum value is not a valid number');" +
+				" \nRaise_Application_Error(-20000, 'value not accepted');" +
 				" \nEND IF;" +
 				" \nEND;";
 		
 		return script;
+	}
+	
+	public String createTupleOtherScript(String tableName, String triggerName, String column1, String column2, String operator, String sql) {
+		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
+				" \nBEFORE INSERT OR UPDATE ON " + tableName + 
+				" \nFOR EACH ROW" + 
+				" \nDECLARE" +
+				" \nVALUE1 VARCHAR2" +
+				" \nVALUE2 VARCHAR2" +
+				" \nBEGIN" +
+				" \nVALUE1 := :NEW." + column1 + ";" +
+				" \nVALUE2 := :NEW." + column2 + ";" +
+				" \nFOR o in (SELECT " + column1 + " FROM " + tableName + ")" +
+				" \nIF (o = VALUE1)" +
+				" \nTHEN " +
+				" \nIF (" + column2 + " " + operator + " " + sql + ") = FALSE" +
+				" \nRaise_Application_Error(-20000, 'value not accepted');" +
+				" \nEND IF;" +
+				" \nEND;";
+		
+		return script;
+	
 	}
 }
