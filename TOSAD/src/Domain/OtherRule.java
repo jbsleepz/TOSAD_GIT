@@ -19,7 +19,7 @@ public class OtherRule extends Type {
 				" \nVALUE VARCHAR2" +
 				" \nBEGIN" +
 				" \nVALUE := :NEW." + columnName + ";" +
-				" \nIF (" + columnName + " " + operator + " " + sql + ") = FALSE" +
+				" \nIF (VALUE " + operator + " " + sql + ") = FALSE" +
 				" \nTHEN " +
 				" \nRaise_Application_Error(-20000, 'value not accepted');" +
 				" \nEND IF;" +
@@ -41,12 +41,27 @@ public class OtherRule extends Type {
 				" \nFOR o in (SELECT " + column1 + " FROM " + tableName + ")" +
 				" \nIF (o = VALUE1)" +
 				" \nTHEN " +
-				" \nIF (" + column2 + " " + operator + " " + sql + ") = FALSE" +
+				" \nIF (VALUE2 " + operator + " " + sql + ") = FALSE" +
 				" \nRaise_Application_Error(-20000, 'value not accepted');" +
 				" \nEND IF;" +
 				" \nEND;";
 		
 		return script;
 	
+	}
+	
+	public String createEntityOtherRule(String tableName, String triggerName, String columnName, String operator, String sql) {
+		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
+				" \nBEFORE INSERT OR UPDATE ON " + tableName + 
+				" \nFOR EACH ROW" + 
+				" \nDECLARE" +
+				" \nBEGIN" +
+				" \nIF (" + columnName + " " + operator + " " + sql + ") = FALSE" +
+				" \nTHEN " +
+				" \nRaise_Application_Error(-20000, 'value not accepted');" +
+				" \nEND IF;" +
+				" \nEND;";
+		
+		return script;
 	}
 }
