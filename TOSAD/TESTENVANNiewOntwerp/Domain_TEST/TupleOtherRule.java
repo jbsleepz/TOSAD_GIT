@@ -7,6 +7,7 @@ public class TupleOtherRule extends Tuple{
 	public String generateScript() {
 		// TODO Auto-generated method stub
 		return null;
+		
 	}
 
 }
