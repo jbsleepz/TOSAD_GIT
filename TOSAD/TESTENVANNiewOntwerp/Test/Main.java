@@ -26,7 +26,9 @@ public static void main(String[] args) throws SQLException{
 		int minimumValue = 4;
 		int maxiumumValue = 8;
 		String waardeColumn = "testColumn";
+		String waardeColumn2 = "testColumn2";
 		String waardeTable = "testTable";
+		String waardeTable2 = "testTable2";
 		String operator = "<";
 		String sql = "SELECT LALALALA FROM LALA";
 		
@@ -57,6 +59,16 @@ public static void main(String[] args) throws SQLException{
 			((AttributeOtherRule)attribute).setSql(sql);
 			businesRule.setNaam(businesRuleName);
 			System.out.println(attribute.generateScript(businesRule.getNaam(), operator , errorMessage));
+		}
+		
+		if(type.contains("TUPLERANGE")){
+			attribute = factory.makeAttributeScript(RuleType);
+			attribute.addColumns(waardeColumn);
+			attribute.addListTables(waardeTable);
+			businesRule.setNaam(businesRuleName);
+			((AttributeRangeRule) attribute).setMaximumValue(maxiumumValue);
+			((AttributeRangeRule) attribute).setMinimumValue(minimumValue);
+			System.out.println(attribute.generateScript(businesRule.getNaam(), "", errorMessage));
 		}
 		
 		
