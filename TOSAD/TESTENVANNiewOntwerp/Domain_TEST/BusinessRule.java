@@ -2,7 +2,7 @@ package Domain_TEST;
 
 public class BusinessRule {
 	private String naam;
-	private Errormessage error;
+	private String error;
 
 	public String getNaam() {
 		return naam;
@@ -12,12 +12,11 @@ public class BusinessRule {
 		this.naam = naam;
 	}
 
-	public Errormessage getError() {
+	public String getError() {
 		return error;
 	}
 
-	public void setError(Errormessage error) {
+	public void setError(String error) {
 		this.error = error;
 	}
-
 }
