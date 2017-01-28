@@ -49,7 +49,7 @@ public class RuleGeneratorFactory {
 		Entity entity = null;
 		
 		if(ruleType.equalsIgnoreCase("OTHER")){
-			entity = new EntityOther();
+			entity = new EntityOtherRule();
 		}
 		return entity;		
 	}

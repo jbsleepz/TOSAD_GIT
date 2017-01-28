@@ -24,12 +24,12 @@ public class FacadeDomain {
 
 	// Roept de ruleFactory aan om voor het type Attribute Other Rule een script
 	// te generaten.
-	public String MaaktScriptVoorAttributeOther(String ruleType, String businesRuleName, String sql, String operator,
-			String columnWaarde, String tableWaarde, String errorMessage) {
+	public String MaaktScriptVoorAttributeOther(String ruleType, String businesRuleName, String sqlQuery,
+			String operator, String columnWaarde, String tableWaarde, String errorMessage) {
 		attribute = factory.makeAttributeScript(ruleType);
 		attribute.addColumns(columnWaarde);
 		attribute.addListTables(tableWaarde);
-		((AttributeOtherRule) attribute).setSql(sql);
+		((AttributeOtherRule) attribute).setSql(sqlQuery);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
 		return attribute.generateScript(businesRule.getNaam(), operator, businesRule.getError());
@@ -48,13 +48,15 @@ public class FacadeDomain {
 		return attribute.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
-	// Roept de ruleFactory aan om voor het type Attribute List Rule een script te generaten.
+	// Roept de ruleFactory aan om voor het type Attribute List Rule een script
+	// te generaten.
 	public String MaaktScriptVoorAttributeList() {
 
 		return "";
 	}
 
-	// Roept de ruleFactory aan om voor het type Tuple Compare Rule een script te generaten.
+	// Roept de ruleFactory aan om voor het type Tuple Compare Rule een script
+	// te generaten.
 	public String maakScriptVoorTupleCompare(String ruleType, String businesRuleName, String vergelijkingswaarde1,
 			String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,
 			String tableWaarde1, String errorMessage) {
@@ -69,40 +71,48 @@ public class FacadeDomain {
 		return tuple.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
-	public String maakScriptTupleOther() {
-
-		return "";
+	// Roept de ruleFactory aan om voor het type Tuple Other Rule een script
+	// te generaten.
+	public String maakScriptTupleOther(String ruleType, String sqlQuery, String businesRuleName,String operator, String columnWaarde1, String columnWaarde2, String tableWaarde1,String errorMessage) {
+		tuple = factory.makeTupleScript(ruleType);
+		tuple.addColumns(columnWaarde1);
+		tuple.addColumns(columnWaarde2);
+		tuple.addListTables(tableWaarde1);
+		businesRule.setNaam(businesRuleName);
+		businesRule.setError(errorMessage);
+		((TupleOtherRule) tuple).setSql(sqlQuery);
+		return tuple.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
-	// Roept de ruleFactory aan om voor het type InterEntity Rules te generaten.
-	public String maakScriptVoorEntity(String ruleType) {
-		entity
-		((AttributeOtherRule) attribute).setSql(sql);
+	// Roept de ruleFactory aan om voor het type Entity OtherRule Rule een script
+	// te generaten.
+	public String maakScriptVoorEntityOther(String ruleType, String sqlQuery, String businesRuleName,
+			String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1,
+			String tableWaarde1, String errorMessage) {
+		((AttributeOtherRule) attribute).setSql(sqlQuery);
 		entity = factory.makeEntityScript(ruleType);
 		entity.addColumns(columnWaarde1);
-		entity.addColumns(columnWaarde2);
 		entity.addListTables(tableWaarde1);
-		entity.addListTables(tableWaarde2);
 		entity.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
-		entity.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
 		return entity.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
-	// Roept de ruleFactory aan om voor het type Entity Rules te generaten.
-	public String maakScriptVoorInterEntity(String ruleType, String businesRuleName, String vergelijkingswaarde1,
-			String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,
-			String tableWaarde1, String tableWaarde2, String errorMessage) {
-		entity = factory.makeEntityScript(ruleType);
-		entity.addColumns(columnWaarde1);
-		entity.addColumns(columnWaarde2);
-		entity.addListTables(tableWaarde1);
-		entity.addListTables(tableWaarde2);
-		entity.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
-		entity.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
+	// Roept de ruleFactory aan om voor het type Inter-Entity Compare Rule een script
+	// te generaten.
+	public String maakScriptVoorInterEntity(String ruleType, String sqlQuery, String businesRuleName,
+			String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1,
+			String columnWaarde2, String tableWaarde1, String tableWaarde2, String errorMessage) {
+		inter = factory.makeInterEntityScript(ruleType);
+		inter.addColumns(columnWaarde1);
+		inter.addColumns(columnWaarde2);
+		inter.addListTables(tableWaarde1);
+		inter.addListTables(tableWaarde2);
+		inter.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
+		inter.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
-		return entity.generateScript(businesRule.getNaam(), operator, businesRule.getError());
+		return inter.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 }
