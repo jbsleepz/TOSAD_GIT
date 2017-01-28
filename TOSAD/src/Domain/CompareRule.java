@@ -4,12 +4,15 @@ package Domain;
 import java.util.ArrayList;
 
 
-public class CompareRule extends Type {
+public class CompareRule extends Businessrule {
+	
 	private String script;
-	Operator operator;
-	int i = 1;
-
-
+	private String checkValue;
+	
+	public CompareRule(String businessRuleName) {
+		super(businessRuleName);
+		// TODO Auto-generated constructor stub
+	}
 
 	// this method only works if the values to be compared are "Strings"
 	public String createAttributeCompareScript(String triggerName, String tableName, String columnName,  String checkValue,String operator) { // attribute

@@ -1,5 +1,9 @@
 package Domain;
 
-public class ModifyRule extends Type{
-	Operator operator = new Operator();
+public class ModifyRule implements Type{
+	
+	public String generateCode(){
+		
+	}
+	
 }

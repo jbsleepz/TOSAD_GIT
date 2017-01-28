@@ -5,18 +5,73 @@ import Domain.RuleType;
 
 public class Domain_Facade_Interface_Impl implements Domain_Facade_Interface{
 
-	private Businessrule Businessrule;
-	private BusinessruleType BusinessRuleType;
+	private Businessrule businessRule;
+	private BusinessruleType businessRuleType;
+
 	
+	public void generateRule(String type, String rule, String businessRuleNaam){
+		businessRule = new Businessrule(businessRuleNaam);
+	}
 	
 	public void createBusinessRule(String name){
-		Businessrule = new Businessrule(name);
+		BusinessRule = new Businessrule(name);
 	}
 	
-	public void getBusinessRuleType(){
-		BusinessRuleType = Businessrule.getBusinessRuleType();	
-	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 /*	public Domain_Facade_Interface_Impl(){
 		Businessrule = new Businessrule();
 	}

@@ -1,16 +1,14 @@
 package Domain;
 
-public class RangeRule extends Type{
+public class RangeRule extends Businessrule{
 	
 	int minimumValue = 0;
 	int maximumValue = 0;
 	
-
-	
-	
-	public RangeRule(int min, int max){  // creating the rangerule-object
-		this.minimumValue = min;
-		this.maximumValue = max;
+	public RangeRule(String businessRuleName, int minimumValue, int maximumValue) {
+		super(businessRuleName);
+		this.minimumValue = minimumValue;
+		this.maximumValue = maximumValue;
 	}
 	
 	public int getMinValue(){  //return the minimum value of the rangerule
@@ -21,26 +19,7 @@ public class RangeRule extends Type{
 		return maximumValue;
 	}
 	
-	public String CreateRangeRuleScript(String tableName,String triggerName, String columnname, int minimumValue, int maximumValue, String Operator){
-		String script1 = ""/*"CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
-						" \nBEFORE INSERT OR UPDATE ON " + tableName + 
-						" \nFOR EACH ROW" +
-						" \nDECLARE"+ 
-						" \nMINVALUE NUMBER := " + min + ";" + 
-						" \nMAXVALUE NUMBER := " + max + ";" + 
-						" \nMINIMUMVALUE NUMBER;" +
-						" \nMAXIMUMVALUE NUMBER;" +
-						" \nBEGIN"+ 
-						" \nMINIMUMVALUE := :NEW.MINIMUMVALUE;" +
-						" \nMAXIMUMVALUE := :NEW.MAXIMUMVALUE;" +
-						" \nIF (MINIMUMVALUE < MINVALUE OR MINIMUMVALUE > MAXVALUE)" + 
-						" \nTHEN " + 
-						" \nRaise_Application_Error(-20000, 'minimum value is not a valid number');" + //exceptionmessage
-						" \nELSIF (MAXIMUMVALUE < MINVALUE OR MAXIMUMVALUE > MAXVALUE)" +
-						" \nTHEN " + 
-						" \nRaise_Application_Error(-20001, 'maximum value is not a valid number');" + //exceptionmessage
-						" \nEND IF;" +
-						" \nEND;"*/;
+	public String CreateRangeRuleScript(String triggerName, String tableName, String columnname, int minimumValue, int maximumValue, String errormessage){
 		
 		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tableName + 
@@ -49,9 +28,9 @@ public class RangeRule extends Type{
 				" \nVALUE NUMBER" +
 				" \nBEGIN"+ 
 				" \nVALUE := :NEW." + columnname + ";" +
-				" \nIF (VALUE NOT "+ Operator + " " + minimumValue + " AND " + maximumValue + ")" + 
+				" \nIF (VALUE NOT BETWEEN " + minimumValue + " AND " + maximumValue + ")" + 
 				" \nTHEN " + 
-				" \nRaise_Application_Error(-20000, 'minimum value is not a valid number');" +
+				" \nRaise_Application_Error(-20000, '" + errormessage + "');" +
 				" \nEND IF;" +
 				" \nEND;";
 

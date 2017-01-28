@@ -5,15 +5,11 @@ import java.util.ArrayList;
 public class Tuple extends Rule{
 	private String name = "tuple";
 	private String tabelName;
-	private ArrayList attributes;
-	private ArrayList tableNameList;
-	private RuleType ruleType = new RuleType();
-	
-	public Tuple(){
-		
-	}
+	private ArrayList<String> attributes;
+	private ArrayList<String> tableNameList;
 	
 	public Tuple(String tabelName){
+		super();
 		this.tabelName = tabelName;
 		this.attributes = new ArrayList();
 	}
@@ -26,11 +22,14 @@ public class Tuple extends Rule{
 		return tabelName;
 	}
 	
-	public ArrayList getAttributeList(){
+	public ArrayList<String> getAttributeList(){
 		return attributes;
 	}
-	
-	public RuleType getRuleType(){
-		return ruleType;
+	public void addAttributesArray(String waarde){
+		attributes.add(waarde);
 	}
+	public void addTableNameListArray(String waarde){
+		tableNameList.add(waarde);
+	}
+
 }

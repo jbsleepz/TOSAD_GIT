@@ -1,17 +1,27 @@
 package Domain;
 
-public class OtherRule extends Type {
+public class OtherRule implements Type {
 	String sqlQuery;
 	
-	public OtherRule() {
-	
+	public OtherRule(String sqlQuery, String businessRuleName) {
+		this.sqlQuery = sqlQuery;
+	}
+	public String generateCode(String businessruleType,String triggerName,String tableName, String column1, String column2, String operator, String sql){
+		String generatedScript = "";
+		if (businessruleType.equalsIgnoreCase("Attribute")){
+			createAttributeOtherScript(triggerName, tableName, column1, operator, sql);
+		} else if (businessruleType.equalsIgnoreCase("tuple")){
+			createTupleOtherScript(triggerName, tableName, column1, column2, operator, sql);
+		} else {
+			createEntityOtherRule(triggerName, tableName, column1, operator, sql);
+		}
+		return generatedScript;
+		
 	}
 	
-	public String getSqlQuery() {
-		return sqlQuery;
-	}
+
 	
-	public String createAttributeOtherScript(String tableName, String triggerName, String columnName, String operator, String sql) {
+	public String createAttributeOtherScript(String triggerName,String tableName,  String columnName, String operator, String sql) {
 		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tableName + 
 				" \nFOR EACH ROW" + 
@@ -28,7 +38,7 @@ public class OtherRule extends Type {
 		return script;
 	}
 	
-	public String createTupleOtherScript(String tableName, String triggerName, String column1, String column2, String operator, String sql) {
+	public String createTupleOtherScript(String triggerName,String tableName, String column1, String column2, String operator, String sql) {
 		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tableName + 
 				" \nFOR EACH ROW" + 
@@ -50,7 +60,7 @@ public class OtherRule extends Type {
 	
 	}
 	
-	public String createEntityOtherRule(String tableName, String triggerName, String columnName, String operator, String sql) {
+	public String createEntityOtherRule(String triggerName,String tableName, String columnName, String operator, String sql) {
 		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tableName + 
 				" \nFOR EACH ROW" + 
@@ -63,5 +73,8 @@ public class OtherRule extends Type {
 				" \nEND;";
 		
 		return script;
+	}
+	public String getSqlQuery() {
+		return sqlQuery;
 	}
 }

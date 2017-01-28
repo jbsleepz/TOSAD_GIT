@@ -4,14 +4,9 @@ public class Attribute extends Rule{
 	private String name = "attribute";
 	private String tableName;
 	private String attributeName;
-	private RuleType ruleType = new RuleType();
-	
-	public Attribute(){
-		super();
-	}
-	
 	
 	public Attribute (String tableName, String attributeName){
+		super();
 		this.tableName = tableName;
 		this.attributeName = attributeName;
 	}
@@ -26,10 +21,6 @@ public class Attribute extends Rule{
 	
 	public String getAttributeName(){
 		return attributeName;
-	}
-	
-	public RuleType getRuleType(){
-		return ruleType;
 	}
 	
 	public void setAttributes(String tableName, String attributeName){

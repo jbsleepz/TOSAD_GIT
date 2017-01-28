@@ -11,20 +11,22 @@ public class TestHashMap {
 
 		public static void main(String[] args) throws SQLException{
 		
+		System.out.println("hash 1");
 		Map m1 = new HashMap();
 		m1.put("map", "HashMap");
 		m1.put("schildt", "java2");
 		m1.put("mathew", "Hyden");
 		m1.put("schildt", "java2s");
 		
+		System.out.println("hash 2");
 		Map m2 = new HashMap();
 		m2.put("blabla", "HashMap");
 		m2.put("blabla2", "java2");
 		m2.put("blabla3", "Hyden");
 		m2.put("blabla4", "java2s");
 		
-		System.out.println(m1.keySet()); 
-		System.out.println(m1.values() + "\n"); 
+		System.out.println(m2.keySet()); 
+		System.out.println(m2.values() + "\n"); 
 		
 	/*	
 		SortedMap sm = new TreeMap();
@@ -35,12 +37,13 @@ public class TestHashMap {
 		System.out.println(sm.keySet()); 
 		System.out.println(sm.values());*/
 
+		System.out.println("linked hash 1");
 		LinkedHashMap lm = new LinkedHashMap(m1);
-/*		lm.put("map", "LinkedHashMap");
+		lm.put("map", "LinkedHashMap");
 		lm.put("schildt", "java2");
 		lm.put("mathew", "Hyden");
-		lm.put("schildt", "java2s");*/
+		lm.put("schildt", "java2s");
 		System.out.println(lm.keySet()); 
-		System.out.println(lm.values());
+		System.out.println(lm.get("map"));
 	}
 }

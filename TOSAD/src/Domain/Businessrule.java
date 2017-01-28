@@ -2,32 +2,37 @@ package Domain;
 
 import Domain.BusinessruleType;
 
-public class Businessrule {
-	private String ruleName;
-	private String tableName;
-	private String columnName;
-	private BusinessruleType businessruleType = new BusinessruleType();
+public abstract class Businessrule {
+	protected String businessRuleName;
+	protected BusinessruleType businessruleType = new BusinessruleType();
 
-	
-	public Businessrule(String ruleName){
-		this.ruleName = ruleName;
+	public Businessrule(String businessRuleName) {
+		this.businessRuleName = businessRuleName;
 	}
-	
-	public String getRuleName(){
-		return ruleName;
-	}
-	
 
-	
-	
-	public void setBusinessRuleType(String rule){
-		businessruleType.setTypeToBusinessruleType(ruleName);
-		
+	public String getbusinessRuleName() {
+		return businessRuleName;
 	}
-	
-	
-	public BusinessruleType getBusinessRuleType(){
+
+	public void setBusinessRuleType(String rule) {
+		businessruleType.setTypeToBusinessruleType(businessRuleName);
+
+	}
+
+	public BusinessruleType getBusinessRuleType() {
 		return businessruleType;
 	}
-	
+
+	public BusinessruleType getBusinessruleType() {
+		return businessruleType;
+	}
+
+	public void setBusinessruleType(BusinessruleType businessruleType) {
+		this.businessruleType = businessruleType;
+	}
+
+	public void setbusinessRuleName(String businessRuleName) {
+		this.businessRuleName = businessRuleName;
+	}
+
 }
