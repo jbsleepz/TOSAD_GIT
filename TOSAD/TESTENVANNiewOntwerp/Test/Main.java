@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Domain_TEST.Attribute;
+import Domain_TEST.AttributeOtherRule;
 import Domain_TEST.AttributeRangeRule;
 import Domain_TEST.BusinessRule;
 import Domain_TEST.RuleGeneratorFactory;
@@ -19,14 +20,15 @@ public static void main(String[] args) throws SQLException{
 		//moet hij ophalen van de servlet.
 		String businesRuleName = "NaampjeTest";
 		String errorMessage = "Error error Biep biep";
-		String type = "ATTRIBUTECOMPARE";
-		String RuleType = "COMPARE";
+		String type = "ATTRIBUTEOTHER";
+		String RuleType = "OTHER";
 		String vergelijkingswaarde = "test";
 		int minimumValue = 4;
 		int maxiumumValue = 8;
 		String waardeColumn = "testColumn";
 		String waardeTable = "testTable";
 		String operator = "<";
+		String sql = "SELECT LALALALA FROM LALA";
 		
 		
 		if(type.contains("ATTRIBUTERANGE")){
@@ -48,18 +50,16 @@ public static void main(String[] args) throws SQLException{
 			System.out.println(attribute.generateScript(businesRule.getNaam(), operator , errorMessage));
 		}
 		
-		if(type.contains("ATTRIBUTECOMPARE")){
+		if(type.contains("ATTRIBUTEOTHER")){
 			attribute = factory.makeAttributeScript(RuleType);
 			attribute.addColumns(waardeColumn);
 			attribute.addListTables(waardeTable);
-			attribute.setColumnCheckWaarde(waardeColumn, vergelijkingswaarde);
+			((AttributeOtherRule)attribute).setSql(sql);
 			businesRule.setNaam(businesRuleName);
 			System.out.println(attribute.generateScript(businesRule.getNaam(), operator , errorMessage));
 		}
 		
 		
 		
-		
-
 }
 }
