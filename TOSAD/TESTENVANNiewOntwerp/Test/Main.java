@@ -19,23 +19,46 @@ public static void main(String[] args) throws SQLException{
 		//moet hij ophalen van de servlet.
 		String businesRuleName = "NaampjeTest";
 		String errorMessage = "Error error Biep biep";
-		String type = "ATTRIBUTERANGE";
-		String RuleType = "RANGE";
+		String type = "ATTRIBUTECOMPARE";
+		String RuleType = "COMPARE";
+		String vergelijkingswaarde = "test";
 		int minimumValue = 4;
 		int maxiumumValue = 8;
-		String waarde = "testColumn";
+		String waardeColumn = "testColumn";
+		String waardeTable = "testTable";
+		String operator = "<";
+		
 		
 		if(type.contains("ATTRIBUTERANGE")){
 			attribute = factory.makeAttributeScript(RuleType);
-			attribute.addColumns(waarde);
-			attribute.addListTables(waarde);
+			attribute.addColumns(waardeColumn);
+			attribute.addListTables(waardeTable);
 			businesRule.setNaam(businesRuleName);
 			((AttributeRangeRule) attribute).setMaximumValue(maxiumumValue);
 			((AttributeRangeRule) attribute).setMinimumValue(minimumValue);
 			System.out.println(attribute.generateScript(businesRule.getNaam(), "", errorMessage));
 		}
 		
-		//test
+		if(type.contains("ATTRIBUTECOMPARE")){
+			attribute = factory.makeAttributeScript(RuleType);
+			attribute.addColumns(waardeColumn);
+			attribute.addListTables(waardeTable);
+			attribute.setColumnCheckWaarde(waardeColumn, vergelijkingswaarde);
+			businesRule.setNaam(businesRuleName);
+			System.out.println(attribute.generateScript(businesRule.getNaam(), operator , errorMessage));
+		}
+		
+		if(type.contains("ATTRIBUTECOMPARE")){
+			attribute = factory.makeAttributeScript(RuleType);
+			attribute.addColumns(waardeColumn);
+			attribute.addListTables(waardeTable);
+			attribute.setColumnCheckWaarde(waardeColumn, vergelijkingswaarde);
+			businesRule.setNaam(businesRuleName);
+			System.out.println(attribute.generateScript(businesRule.getNaam(), operator , errorMessage));
+		}
+		
+		
+		
 		
 
 }
