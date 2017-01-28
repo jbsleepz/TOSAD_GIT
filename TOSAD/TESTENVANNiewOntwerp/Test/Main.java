@@ -17,20 +17,22 @@ public static void main(String[] args) throws SQLException{
 		RuleGeneratorFactory factory = new RuleGeneratorFactory();
 		BusinessRule businesRule = new BusinessRule();
 		Tuple tuple = null;
+		Attribute attribute = null;
 		
 		//moet hij ophalen van de servlet.
 		String businesRuleName = "NaampjeTest";
 		String errorMessage = "Error error Biep biep";
 		String type = "TUPLECOMPARE";
-		String RuleType = "OTHER";
+		String RuleType = "COMPARE";
 		String vergelijkingswaarde = "test";
+		String vergelijkingswaarde2 = "Blijkbaar zo";
 		int minimumValue = 4;
 		int maxiumumValue = 8;
 		String waardeColumn = "testColumn";
 		String waardeColumn2 = "testColumn2";
 		String waardeTable = "testTable";
 		String waardeTable2 = "testTable2";
-		String operator = "<";
+		String operator = "==";
 		String sql = "SELECT LALALALA FROM LALA";
 		
 		
@@ -69,6 +71,7 @@ public static void main(String[] args) throws SQLException{
 			tuple.addListTables(waardeTable);
 			businesRule.setNaam(businesRuleName);
 			tuple.setColumnCheckWaarde(waardeColumn, vergelijkingswaarde);
+			tuple.setColumnCheckWaarde(waardeColumn2, vergelijkingswaarde2);
 			System.out.println(tuple.generateScript(businesRule.getNaam(), operator, errorMessage));
 		}
 		

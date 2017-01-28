@@ -2,13 +2,15 @@ package Domain_TEST;
 
 
 public class EntityOtherRule extends Entity{
+	
+	private String sql;
 
 	public EntityOtherRule(){
 		super();
 	}
 	
 	@Override
-	public String generateScript(String triggerName, String operator, String errormessage) {
+	public String generateScript(String triggerName, String operator, String errorMessage) {
 		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" + 
@@ -16,11 +18,19 @@ public class EntityOtherRule extends Entity{
 				" \nBEGIN" +
 				" \nIF (" + columns.get(0) + " " + operator + " " + sql + ") = FALSE" +
 				" \nTHEN " +
-				" \nRaise_Application_Error(-20000, 'value not accepted');" +
+				" \nRaise_Application_Error(-20000, '" + errorMessage + "');" +
 				" \nEND IF;" +
 				" \nEND;";
 		
 		return script;
+	}
+
+	public String getSql() {
+		return sql;
+	}
+
+	public void setSql(String sql) {
+		this.sql = sql;
 	}
 
 }

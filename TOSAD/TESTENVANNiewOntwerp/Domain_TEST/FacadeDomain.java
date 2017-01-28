@@ -48,17 +48,25 @@ public class FacadeDomain {
 		return attribute.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
-	// Roept de ruleFactory aan om voor het type Attribute List Rule een script
-	// te generaten.
+	// Roept de ruleFactory aan om voor het type Attribute List Rule een script te generaten.
 	public String MaaktScriptVoorAttributeList() {
 
 		return "";
 	}
 
-	// Roept de ruleFactory aan om voor het type Tuple Rules te generaten.
-	public String maakScriptVoorTuple(String ruleType) {
-
-		return "";
+	// Roept de ruleFactory aan om voor het type Tuple Compare Rule een script te generaten.
+	public String maakScriptVoorTupleCompare(String ruleType, String businesRuleName, String vergelijkingswaarde1,
+			String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,
+			String tableWaarde1, String errorMessage) {
+		tuple = factory.makeTupleScript(ruleType);
+		tuple.addColumns(columnWaarde1);
+		tuple.addColumns(columnWaarde2);
+		tuple.addListTables(tableWaarde1);
+		businesRule.setNaam(businesRuleName);
+		businesRule.setError(errorMessage);
+		tuple.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
+		tuple.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
+		return tuple.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
 	public String maakScriptTupleOther() {
