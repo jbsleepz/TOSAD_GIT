@@ -39,7 +39,7 @@ public class RuleGeneratorFactory {
 	public InterEntity makeInterEntityScript(String ruleType){
 		InterEntity interEntity = null;
 		if (ruleType.equalsIgnoreCase("COMPARE")){
-			interEntity = new InterEntityCompare();
+			interEntity = new InterEntityCompareRule();
 		}
 		return interEntity;
 	}

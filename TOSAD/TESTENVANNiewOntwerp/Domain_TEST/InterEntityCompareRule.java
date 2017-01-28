@@ -1,9 +1,9 @@
 package Domain_TEST;
 
 
-public class InterEntityCompare extends InterEntity {
+public class InterEntityCompareRule extends InterEntity {
 
-	public InterEntityCompare(){
+	public InterEntityCompareRule(){
 		super();
 	}
 	
