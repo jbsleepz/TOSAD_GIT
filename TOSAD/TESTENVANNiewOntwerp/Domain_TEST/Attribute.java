@@ -23,7 +23,7 @@ public abstract class Attribute {
 	public void addColumns(String waarde){
 		columns.add(waarde);
 	}
-	private void setColumnCheckWaarde(String column, String checkWaarde) {
+	public void setColumnCheckWaarde(String column, String checkWaarde) {
 		columnCheckwaarde.put(column, checkWaarde);
 	}
 	public String columnCheckwaarde(String key){
