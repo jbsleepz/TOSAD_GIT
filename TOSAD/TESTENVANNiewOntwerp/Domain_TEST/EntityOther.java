@@ -9,8 +9,18 @@ public class EntityOther extends Entity{
 	
 	@Override
 	public String generateScript(String triggerName, String operator, String errormessage) {
-		// TODO Auto-generated method stub
-		return null;
+		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
+				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
+				" \nFOR EACH ROW" + 
+				" \nDECLARE" +
+				" \nBEGIN" +
+				" \nIF (" + columns.get(0) + " " + operator + " " + sql + ") = FALSE" +
+				" \nTHEN " +
+				" \nRaise_Application_Error(-20000, 'value not accepted');" +
+				" \nEND IF;" +
+				" \nEND;";
+		
+		return script;
 	}
 
 }
