@@ -61,13 +61,13 @@ public class FacadeDomain {
 	}
 	
 	//Roept de ruleFactory aan om voor het type InterEntity Rules te generaten.
-	public String maakScriptVoorInterEntity(String ruleType){
-
+	public String maakScriptVoorEntity(String ruleType){
+		
 		return "";
 	}
 	
 	//Roept de ruleFactory aan om voor het type Entity Rules te generaten.
-	public String maakScriptVoorEntity(String ruleType, String businesRuleName,String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,String tableWaarde1, String tableWaarde2, String errorMessage){
+	public String maakScriptVoorInterEntity(String ruleType, String businesRuleName,String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,String tableWaarde1, String tableWaarde2, String errorMessage){
 		entity = factory.makeEntityScript(ruleType);
 		entity.addColumns(columnWaarde1);
 		entity.addColumns(columnWaarde2);
