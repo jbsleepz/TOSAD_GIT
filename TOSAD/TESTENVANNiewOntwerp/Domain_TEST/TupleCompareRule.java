@@ -10,10 +10,7 @@ public class TupleCompareRule extends Tuple{
 	
 	
 	public String generateScript(String triggerName , String operator, String errorMessage) { 
-		// tuple
-		// 1 table
-		// 2 columns
-		// compare with user input
+		
 		script = "CREATE OR REPLACE TRIGGER " + "TRIGGER_" + triggerName +
 				 " \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				 " \nFOR EACH ROW" +
@@ -32,8 +29,6 @@ public class TupleCompareRule extends Tuple{
 				"\nEND IF" +
 			    "\nEND";
 		
-		
-
 		return script;
 	}
 }

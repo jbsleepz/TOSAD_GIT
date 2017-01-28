@@ -76,8 +76,18 @@ public class FacadeDomain {
 
 	// Roept de ruleFactory aan om voor het type InterEntity Rules te generaten.
 	public String maakScriptVoorEntity(String ruleType) {
-
-		return "";
+		entity
+		((AttributeOtherRule) attribute).setSql(sql);
+		entity = factory.makeEntityScript(ruleType);
+		entity.addColumns(columnWaarde1);
+		entity.addColumns(columnWaarde2);
+		entity.addListTables(tableWaarde1);
+		entity.addListTables(tableWaarde2);
+		entity.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
+		entity.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
+		businesRule.setNaam(businesRuleName);
+		businesRule.setError(errorMessage);
+		return entity.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 
 	// Roept de ruleFactory aan om voor het type Entity Rules te generaten.
