@@ -11,11 +11,11 @@ public class AttributeRangeRule extends Attribute {
 		super();
 	}
 	
-	public AttributeRangeRule(int minimumValue, int maximumValue){
+/*	public AttributeRangeRule(int minimumValue, int maximumValue){
 		super();
 		this.minimumValue = minimumValue;
 		this.maximumValue = maximumValue;
-	}
+	}*/
 	
 	public String generateScript(String triggerName, String operator, String errorMessage) {
 		script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
