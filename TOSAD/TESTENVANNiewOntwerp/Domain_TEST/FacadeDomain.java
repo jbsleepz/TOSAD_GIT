@@ -7,67 +7,75 @@ public class FacadeDomain {
 	Tuple tuple = null;
 	Entity entity = null;
 	InterEntity inter = null;
-		
-	
-	//Roept de ruleFactory aan om voor het type Attribute Range Rule een script te generaten.
-	public void MaakScriptVoorAttributeRange(String ruleType, String businesRuleName, String columnWaarde,String tableWaarde,int minimumValue ,int maxiumumValue, String errorMessage){
-			attribute = factory.makeAttributeScript(ruleType);
-			attribute.addColumns(columnWaarde);
-			attribute.addListTables(tableWaarde);
-			businesRule.setNaam(businesRuleName);
-			businesRule.setError(errorMessage);
-			((AttributeRangeRule) attribute).setMaximumValue(maxiumumValue);
-			((AttributeRangeRule) attribute).setMinimumValue(minimumValue);
-			attribute.generateScript(businesRule.getNaam(), "", businesRule.getError());	
-	} 
-	
-	//Roept de ruleFactory aan om voor het type Attribute Other Rule een script te generaten.
-	public String MaaktScriptVoorAttributeOther(String ruleType, String businesRuleName,String sql, String operator, String columnWaarde,String tableWaarde, String errorMessage){
+
+	// Roept de ruleFactory aan om voor het type Attribute Range Rule een script
+	// te generaten.
+	public void MaakScriptVoorAttributeRange(String ruleType, String businesRuleName, String columnWaarde,
+			String tableWaarde, int minimumValue, int maxiumumValue, String errorMessage) {
 		attribute = factory.makeAttributeScript(ruleType);
 		attribute.addColumns(columnWaarde);
 		attribute.addListTables(tableWaarde);
-		((AttributeOtherRule)attribute).setSql(sql);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
-		return attribute.generateScript(businesRule.getNaam(), operator , businesRule.getError());
+		((AttributeRangeRule) attribute).setMaximumValue(maxiumumValue);
+		((AttributeRangeRule) attribute).setMinimumValue(minimumValue);
+		attribute.generateScript(businesRule.getNaam(), "", businesRule.getError());
 	}
-	
-	//Roept de ruleFactory aan om voor het type Attribute Compare Rule een script te generaten.
-	public String MaaktScriptVoorAttributeCompare(String ruleType, String businesRuleName,String vergelijkingswaarde, String operator, String columnWaarde,String tableWaarde, String errorMessage){
+
+	// Roept de ruleFactory aan om voor het type Attribute Other Rule een script
+	// te generaten.
+	public String MaaktScriptVoorAttributeOther(String ruleType, String businesRuleName, String sql, String operator,
+			String columnWaarde, String tableWaarde, String errorMessage) {
+		attribute = factory.makeAttributeScript(ruleType);
+		attribute.addColumns(columnWaarde);
+		attribute.addListTables(tableWaarde);
+		((AttributeOtherRule) attribute).setSql(sql);
+		businesRule.setNaam(businesRuleName);
+		businesRule.setError(errorMessage);
+		return attribute.generateScript(businesRule.getNaam(), operator, businesRule.getError());
+	}
+
+	// Roept de ruleFactory aan om voor het type Attribute Compare Rule een
+	// script te generaten.
+	public String MaaktScriptVoorAttributeCompare(String ruleType, String businesRuleName, String vergelijkingswaarde,
+			String operator, String columnWaarde, String tableWaarde, String errorMessage) {
 		attribute = factory.makeAttributeScript(ruleType);
 		attribute.addColumns(columnWaarde);
 		attribute.addListTables(tableWaarde);
 		attribute.setColumnCheckWaarde(columnWaarde, vergelijkingswaarde);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
-		return attribute.generateScript(businesRule.getNaam(), operator , businesRule.getError());
+		return attribute.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
-	
-	//Roept de ruleFactory aan om voor het type Attribute List Rule een script te generaten.
-	public String MaaktScriptVoorAttributeList(){
-		
+
+	// Roept de ruleFactory aan om voor het type Attribute List Rule een script
+	// te generaten.
+	public String MaaktScriptVoorAttributeList() {
+
 		return "";
 	}
-	
-	//Roept de ruleFactory aan om voor het type Tuple Rules te generaten.
-	public String maakScriptVoorTuple(String ruleType){
-		
+
+	// Roept de ruleFactory aan om voor het type Tuple Rules te generaten.
+	public String maakScriptVoorTuple(String ruleType) {
+
 		return "";
 	}
-		
-	public String maakScriptTupleOther(){
-		
+
+	public String maakScriptTupleOther() {
+
 		return "";
 	}
-	
-	//Roept de ruleFactory aan om voor het type InterEntity Rules te generaten.
-	public String maakScriptVoorEntity(String ruleType){
-		
+
+	// Roept de ruleFactory aan om voor het type InterEntity Rules te generaten.
+	public String maakScriptVoorEntity(String ruleType) {
+
 		return "";
 	}
-	
-	//Roept de ruleFactory aan om voor het type Entity Rules te generaten.
-	public String maakScriptVoorInterEntity(String ruleType, String businesRuleName,String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,String tableWaarde1, String tableWaarde2, String errorMessage){
+
+	// Roept de ruleFactory aan om voor het type Entity Rules te generaten.
+	public String maakScriptVoorInterEntity(String ruleType, String businesRuleName, String vergelijkingswaarde1,
+			String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,
+			String tableWaarde1, String tableWaarde2, String errorMessage) {
 		entity = factory.makeEntityScript(ruleType);
 		entity.addColumns(columnWaarde1);
 		entity.addColumns(columnWaarde2);
@@ -77,5 +85,6 @@ public class FacadeDomain {
 		entity.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
-		return entity.generateScript(businesRule.getNaam(), operator , businesRule.getError());
-	}}
+		return entity.generateScript(businesRule.getNaam(), operator, businesRule.getError());
+	}
+}

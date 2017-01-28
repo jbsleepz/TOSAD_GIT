@@ -1,9 +1,9 @@
 package Domain_TEST;
 
 
-public class EntityOther extends Entity{
+public class EntityOtherRule extends Entity{
 
-	public EntityOther(){
+	public EntityOtherRule(){
 		super();
 	}
 	

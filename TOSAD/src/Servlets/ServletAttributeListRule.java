@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class InterCompareRule extends HttpServlet {
+public class ServletAttributeListRule extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
