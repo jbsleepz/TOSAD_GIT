@@ -2,9 +2,9 @@ package Domain_TEST;
 
 import java.util.ArrayList;
 
-public class TupleCompare extends Tuple{
+public class TupleCompareRule extends Tuple{
 
-	public TupleCompare(){
+	public TupleCompareRule(){
 		super();
 	}
 	

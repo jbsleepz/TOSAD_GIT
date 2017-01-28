@@ -1,7 +1,7 @@
 package Domain_TEST;
 
 
-public class TupleOther extends Tuple{
+public class TupleOtherRule extends Tuple{
 
 	@Override
 	public String generateScript() {

@@ -28,9 +28,9 @@ public class RuleGeneratorFactory {
 		Tuple tuple = null;
 
 		if (ruleType.equalsIgnoreCase("COMPARE")) {
-			tuple = new TupleCompare();
+			tuple = new TupleCompareRule();
 		} else if (ruleType.equalsIgnoreCase("OTHER")) {
-			tuple = new TupleOther();
+			tuple = new TupleOtherRule();
 		}
 		return tuple;
 	}
