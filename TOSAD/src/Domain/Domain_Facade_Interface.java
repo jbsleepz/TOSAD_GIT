@@ -1,7 +1,7 @@
 package Domain;
 
 import Domain.Businessrule;
-import Domain.RuleType;
+import Domain_Test.RuleType;
 
 public interface Domain_Facade_Interface {
 

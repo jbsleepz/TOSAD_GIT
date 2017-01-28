@@ -2,6 +2,11 @@ package Domain;
 
 import java.util.ArrayList;
 
+import Domain_Test.Attribute;
+import Domain_Test.Entity;
+import Domain_Test.InterEntity;
+import Domain_Test.Tuple;
+
 public class BusinessruleType {
 	private Rule rule;
 	private String name;

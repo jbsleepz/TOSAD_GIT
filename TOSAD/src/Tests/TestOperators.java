@@ -1,6 +1,6 @@
 package Tests;
 
-import Domain.Operator;
+import Domain_Test.Operator;
 
 public class TestOperators {
 	public static void main(String[] args){

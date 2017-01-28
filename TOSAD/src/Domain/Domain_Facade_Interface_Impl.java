@@ -1,7 +1,8 @@
 package Domain;
 
 import Domain.Businessrule;
-import Domain.RuleType;
+import Domain_Test.BusinessRule;
+import Domain_Test.RuleType;
 
 public class Domain_Facade_Interface_Impl implements Domain_Facade_Interface{
 
