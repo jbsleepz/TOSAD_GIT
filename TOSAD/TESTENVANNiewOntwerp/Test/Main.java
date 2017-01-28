@@ -3,10 +3,10 @@ package Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Domain.Attribute;
-import Domain.AttributeRangeRule;
-import Domain.BusinessRule;
-import Domain.RuleGeneratorFactory;
+import Domain_TEST.Attribute;
+import Domain_TEST.AttributeRangeRule;
+import Domain_TEST.BusinessRule;
+import Domain_TEST.RuleGeneratorFactory;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package Domain;
+package Domain_TEST;
 
 public class BusinessRule {
 	private String naam;

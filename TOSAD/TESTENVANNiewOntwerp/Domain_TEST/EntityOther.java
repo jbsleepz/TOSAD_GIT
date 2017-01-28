@@ -1,4 +1,5 @@
-package Domain;
+package Domain_TEST;
+
 
 public class EntityOther extends Entity{
 

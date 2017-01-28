@@ -1,4 +1,9 @@
-package Domain;
+package Domain_TEST;
+
+import Domain_TEST.Attribute;
+import Domain_TEST.Entity;
+import Domain_TEST.InterEntity;
+import Domain_TEST.Tuple;
 
 public class RuleGeneratorFactory {
 

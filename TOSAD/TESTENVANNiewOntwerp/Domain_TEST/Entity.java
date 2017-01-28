@@ -1,4 +1,4 @@
-package Domain;
+package Domain_TEST;
 
 public abstract class Entity {
 

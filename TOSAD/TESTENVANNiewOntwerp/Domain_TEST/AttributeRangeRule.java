@@ -1,4 +1,6 @@
-package Domain;
+package Domain_TEST;
+
+import Domain_TEST.Attribute;
 
 public class AttributeRangeRule extends Attribute {
 	
