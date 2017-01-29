@@ -16,7 +16,7 @@ public class InterEntityCompareRule extends InterEntity {
 				 "\nCOLUMNVALUE VARCHAR2" + //value of item in tableName
 				 "\nTARGETCOLUMN VARCHAR2" + 
 				 "\nBEGIN" +
-				 "\nCOLUMNVALUE := NEW." + columns.get(0) +  // new value to be compared with.. column of target tablecolumn
+				 "\nCOLUMNVALUE := NEW." + columnCheckwaarde(columns.get(0)) +  // new value to be compared with.. column of target tablecolumn
 				 "\nSELECT :NEW." + columns.get(1) + " FROM " + tables.get(1) + " INTO TARGETCOLUMN" +
 				 "\nIF (COLUMNVALUE " + operator + " TARGETCOLUMN ) = FALSE" +
 				 "\nTHEN" +

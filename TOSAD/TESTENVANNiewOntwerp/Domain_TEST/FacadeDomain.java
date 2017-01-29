@@ -87,13 +87,12 @@ public class FacadeDomain {
 	// Roept de ruleFactory aan om voor het type Entity OtherRule Rule een script
 	// te generaten.
 	public String maakScriptVoorEntityOther(String ruleType, String sqlQuery, String businesRuleName,
-			String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1,
+			String operator, String columnWaarde1,
 			String tableWaarde1, String errorMessage) {
 		((AttributeOtherRule) attribute).setSql(sqlQuery);
 		entity = factory.makeEntityScript(ruleType);
 		entity.addColumns(columnWaarde1);
 		entity.addListTables(tableWaarde1);
-		entity.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
 		return entity.generateScript(businesRule.getNaam(), operator, businesRule.getError());
@@ -102,7 +101,7 @@ public class FacadeDomain {
 	// Roept de ruleFactory aan om voor het type Inter-Entity Compare Rule een script
 	// te generaten.
 	public String maakScriptVoorInterEntity(String ruleType, String sqlQuery, String businesRuleName,
-			String vergelijkingswaarde1, String vergelijkingswaarde2, String operator, String columnWaarde1,
+			String vergelijkingswaarde1, String operator, String columnWaarde1,
 			String columnWaarde2, String tableWaarde1, String tableWaarde2, String errorMessage) {
 		inter = factory.makeInterEntityScript(ruleType);
 		inter.addColumns(columnWaarde1);
@@ -110,7 +109,6 @@ public class FacadeDomain {
 		inter.addListTables(tableWaarde1);
 		inter.addListTables(tableWaarde2);
 		inter.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
-		inter.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
 		return inter.generateScript(businesRule.getNaam(), operator, businesRule.getError());
