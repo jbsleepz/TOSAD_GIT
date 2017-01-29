@@ -10,7 +10,7 @@ public class FacadeDomain {
 
 	// Roept de ruleFactory aan om voor het type Attribute Range Rule een script
 	// te generaten.
-	public void MaakScriptVoorAttributeRange(String ruleType, String businesRuleName, String columnWaarde,
+	public String MaakScriptVoorAttributeRange(String ruleType, String businesRuleName, String columnWaarde,
 			String tableWaarde, int minimumValue, int maxiumumValue, String errorMessage) {
 		attribute = factory.makeAttributeScript(ruleType);
 		attribute.addColumns(columnWaarde);
@@ -19,7 +19,7 @@ public class FacadeDomain {
 		businesRule.setError(errorMessage);
 		((AttributeRangeRule) attribute).setMaximumValue(maxiumumValue);
 		((AttributeRangeRule) attribute).setMinimumValue(minimumValue);
-		attribute.generateScript(businesRule.getNaam(), "", businesRule.getError());
+		return attribute.generateScript(businesRule.getNaam(), "", businesRule.getError());
 	}
 
 	// Roept de ruleFactory aan om voor het type Attribute Other Rule een script
