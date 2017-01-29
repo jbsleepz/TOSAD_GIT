@@ -24,7 +24,7 @@ public static void main(String[] args) throws SQLException{
 		String businesRuleName = "NaampjeTest";
 		String errorMessage = "Error error Biep biep";
 		String type = "ATTRIBUTERANGE";
-		String RuleType = "RANGE";
+		String RuleType = "OTHER";
 		String vergelijkingswaarde = "test";
 		String vergelijkingswaarde2 = "Blijkbaar zo";
 		int minimumValue = 4;

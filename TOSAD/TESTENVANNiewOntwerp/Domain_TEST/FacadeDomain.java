@@ -1,5 +1,7 @@
 package Domain_TEST;
 
+import java.util.ArrayList;
+
 public class FacadeDomain {
 	RuleGeneratorFactory factory = new RuleGeneratorFactory();
 	BusinessRule businesRule = new BusinessRule();
@@ -51,9 +53,17 @@ public class FacadeDomain {
 
 	// Roept de ruleFactory aan om voor het type Attribute List Rule een script
 	// te generaten.
-	public String MaaktScriptVoorAttributeList() {
-
-		return "";
+	public String MaaktScriptVoorAttributeList(String ruleType, String businesRuleName,
+			String columnWaarde, String tableWaarde, ArrayList<String> listValues , String errorMessage) {
+		attribute = factory.makeAttributeScript(ruleType);
+		for(String s : listValues){
+			attribute.addListTables(s);
+		}
+		attribute.addColumns(columnWaarde);
+		attribute.addListTables(tableWaarde);
+		businesRule.setNaam(businesRuleName);
+		businesRule.setError(errorMessage);
+		return attribute.generateScript(businesRule.getNaam(), "", businesRule.getError());
 	}
 
 	// Roept de ruleFactory aan om voor het type Tuple Compare Rule een script
@@ -90,8 +100,8 @@ public class FacadeDomain {
 	public String maakScriptVoorEntityOther(String ruleType, String sqlQuery, String businesRuleName,
 			String operator, String columnWaarde1,
 			String tableWaarde1, String errorMessage) {
-		((EntityOtherRule) entity).setSql(sqlQuery);
 		entity = factory.makeEntityScript(ruleType);
+		((EntityOtherRule) entity).setSql(sqlQuery);
 		entity.addColumns(columnWaarde1);
 		entity.addListTables(tableWaarde1);
 		businesRule.setNaam(businesRuleName);
