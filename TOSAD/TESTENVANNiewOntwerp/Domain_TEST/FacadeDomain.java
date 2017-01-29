@@ -7,6 +7,7 @@ public class FacadeDomain {
 	Tuple tuple = null;
 	Entity entity = null;
 	InterEntity inter = null;
+	Modify modify = null;
 
 	// Roept de ruleFactory aan om voor het type Attribute Range Rule een script
 	// te generaten.
@@ -89,7 +90,7 @@ public class FacadeDomain {
 	public String maakScriptVoorEntityOther(String ruleType, String sqlQuery, String businesRuleName,
 			String operator, String columnWaarde1,
 			String tableWaarde1, String errorMessage) {
-		((AttributeOtherRule) attribute).setSql(sqlQuery);
+		((EntityOtherRule) entity).setSql(sqlQuery);
 		entity = factory.makeEntityScript(ruleType);
 		entity.addColumns(columnWaarde1);
 		entity.addListTables(tableWaarde1);
@@ -113,4 +114,13 @@ public class FacadeDomain {
 		businesRule.setError(errorMessage);
 		return inter.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
+	public String maakScriptVoorModifyRule(String ruleType, String plSQLquery, String businesRuleName,
+			String tableWaarde1, String errorMessage){
+		modify = factory.makeModifyScript(ruleType);
+		modify.addListTables(tableWaarde1);
+		businesRule.setNaam(businesRuleName);
+		businesRule.setError(errorMessage);
+		return modify.generateScript(businesRule.getNaam(), "" , businesRule.getError());
+	}
+	
 }

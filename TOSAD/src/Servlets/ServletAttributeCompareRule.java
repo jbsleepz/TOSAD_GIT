@@ -14,5 +14,4 @@ public class ServletAttributeCompareRule extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.print("in progress");
 	}
-
 }

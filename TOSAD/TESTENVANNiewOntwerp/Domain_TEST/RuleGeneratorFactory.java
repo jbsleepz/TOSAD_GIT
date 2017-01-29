@@ -53,5 +53,12 @@ public class RuleGeneratorFactory {
 		}
 		return entity;		
 	}
+	public Modify makeModifyScript(String ruleType){
+		Modify modify = null;
+		if(ruleType.equalsIgnoreCase("MODIFY")){
+			modify = new ModifyRule();
+		}
+		return modify;
+	}
 
 }

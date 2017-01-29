@@ -11,7 +11,7 @@ public class AttributeOtherRule extends Attribute{
 	}
 	
 	@Override
-	public String generateScript(String triggerName, String operator, String errormessage) {
+	public String generateScript(String triggerName, String operator, String errorMessage) {
 		String script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" + 
@@ -21,7 +21,7 @@ public class AttributeOtherRule extends Attribute{
 				" \nVALUE := :NEW." + columns.get(0) + ";" +
 				" \nIF (VALUE " + operator + " " + sql + ") = FALSE" +
 				" \nTHEN " +
-				" \nRaise_Application_Error(-20000, 'value not accepted');" +
+				" \nRaise_Application_Error(-20000, '"+ errorMessage + "');" +
 				" \nEND IF;" +
 				" \nEND;";
 		

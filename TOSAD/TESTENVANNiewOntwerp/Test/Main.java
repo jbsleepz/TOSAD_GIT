@@ -7,6 +7,7 @@ import Domain_TEST.Attribute;
 import Domain_TEST.AttributeOtherRule;
 import Domain_TEST.AttributeRangeRule;
 import Domain_TEST.BusinessRule;
+import Domain_TEST.FacadeDomain;
 import Domain_TEST.RuleGeneratorFactory;
 import Domain_TEST.Tuple;
 
@@ -22,8 +23,8 @@ public static void main(String[] args) throws SQLException{
 		//moet hij ophalen van de servlet.
 		String businesRuleName = "NaampjeTest";
 		String errorMessage = "Error error Biep biep";
-		String type = "TUPLECOMPARE";
-		String RuleType = "COMPARE";
+		String type = "ATTRIBUTERANGE";
+		String RuleType = "RANGE";
 		String vergelijkingswaarde = "test";
 		String vergelijkingswaarde2 = "Blijkbaar zo";
 		int minimumValue = 4;
@@ -34,6 +35,7 @@ public static void main(String[] args) throws SQLException{
 		String waardeTable2 = "testTable2";
 		String operator = "==";
 		String sql = "SELECT LALALALA FROM LALA";
+		FacadeDomain fac = new FacadeDomain();
 		
 		
 		if(type.contains("ATTRIBUTERANGE")){
@@ -43,7 +45,8 @@ public static void main(String[] args) throws SQLException{
 			businesRule.setNaam(businesRuleName);
 			((AttributeRangeRule) attribute).setMaximumValue(maxiumumValue);
 			((AttributeRangeRule) attribute).setMinimumValue(minimumValue);
-			System.out.println(attribute.generateScript(businesRule.getNaam(), "", errorMessage));
+			System.out.println(fac.MaakScriptVoorAttributeRange(type, businesRuleName, waardeColumn, waardeTable, minimumValue, maxiumumValue, errorMessage));
+			//System.out.println(attribute.generateScript(businesRule.getNaam(), "", errorMessage));
 		}
 		
 		if(type.contains("ATTRIBUTECOMPARE")){
