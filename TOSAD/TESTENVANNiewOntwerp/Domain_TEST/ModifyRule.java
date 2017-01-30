@@ -8,17 +8,27 @@ public class ModifyRule extends Modify {
 		super();
 	}
 	
-	public String generateScript(String triggerName, String operator, String errorMessage) {
+	public String generateScript(String triggerName, String operator, String checkwaarde,  String errorMessage) {
 		script = 
 				"CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
 				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" + 
 				"DECLARE" 
-				+ plSQLquery 
+				+ "COLUMNVALUE_1 VARCHAR2;"
+				+ "COLUMNVALUE_2 VARCHAR2;"
+				+ "BEGIN"
+				+ "SELECT " + columns.get(1) + " FROM "+ tables.get(1) + " INTO COLUMNVALUE_1;"
+				+ "SELECT :NEW."+ columns.get(0)+ " INTO COLUMNVALUE_2;"
+				+ "IF(COLUMNVALUE_1 " + operator + " " + checkwaarde + ") = TRUE "
 				+ "THEN"
 				+ "l_error_stack := l_error_stack || '" + errorMessage + "';"
 				+ "END IF;"
 				+ "END";
+		
+		
+		//als 
+		
+		
 		
 		/*declare
 		 l_passed boolean := true;
@@ -58,6 +68,12 @@ public class ModifyRule extends Modify {
 
 	public void setSqlQuery(String pl_sqlQuery) {
 		this.plSQLquery = pl_sqlQuery;
+	}
+
+	@Override
+	public String generateScript(String triggerName, String operator, String errormessage) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
