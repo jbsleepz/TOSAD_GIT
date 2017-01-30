@@ -37,7 +37,6 @@ public class FacadeDAO {
 		DAOInterEntityCompareRule iecr = new DAOInterEntityCompareRule();
 		iecr.wijzigInterEntityCompareRule(waarde, ruleID);
 	}
-	//-----------------------------
 	
 	public void DAOAttributeRangeRuleExecuteScript(String script){
 		DAOAttributeRangeRule arng = new DAOAttributeRangeRule();

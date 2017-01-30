@@ -20,7 +20,7 @@ public class TupleCompareRule extends Tuple{
 				 " \n" +  columns.get(1) + " := :NEW." + columns.get(1)+ ";" +
 				 " \nIF ( "+ columns.get(0) + " " + operator + " " + columns.get(1)+") = FALSE" +
 				 " \nTHEN" +
-			     " \nRAISE_APPLICATION_ERROR(20003, '" + errorMessage + "'); " +
+			     " \nRAISE_APPLICATION_ERROR(20000, '" + errorMessage + "'); " +
 				 " \nEND IF;" +
 			     " \nEND";
 		

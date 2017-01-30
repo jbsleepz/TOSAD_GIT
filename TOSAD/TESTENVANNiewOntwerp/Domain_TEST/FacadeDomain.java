@@ -124,10 +124,14 @@ public class FacadeDomain {
 		businesRule.setError(errorMessage);
 		return inter.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
-	public String maakScriptVoorModifyRule(String ruleType, String plSQLquery, String businesRuleName,
-			String tableWaarde1, String errorMessage){
+	public String maakScriptVoorModifyRule(String ruleType, String operator, String businesRuleName,
+			String tableWaarde1, String tableWaarde2, String columnWaarde1, String columnWaarde2,String checkwaarde1, String errorMessage){
 		modify = factory.makeModifyScript(ruleType);
 		modify.addListTables(tableWaarde1);
+		modify.addListTables(tableWaarde2);
+		modify.addColumns(columnWaarde1);
+		modify.addColumns(columnWaarde2);
+		modify.setColumnCheckWaarde(columnWaarde2, checkwaarde1);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
 		return modify.generateScript(businesRule.getNaam(), "" , businesRule.getError());
