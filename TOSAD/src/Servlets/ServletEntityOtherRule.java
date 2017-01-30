@@ -17,8 +17,6 @@ public class ServletEntityOtherRule extends HttpServlet {
 		String ruletype = "Other";
 		String rulename = req.getParameter("RuleName");
 		String sqlquery = req.getParameter("SqlQuery");
-		String vergelijkingswaarde1 = req.getParameter("Vergelijkingswaarde1");
-		String vergelijkingswaarde2 = req.getParameter("Vergelijkingswaarde2");
 		String operator = req.getParameter("Operator");
 		String columnwaarde1 = req.getParameter("ColumnWaarde1");
 		String tablewaarde1 = req.getParameter("TableWaarde1");
