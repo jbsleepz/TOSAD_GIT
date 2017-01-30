@@ -16,8 +16,6 @@ public class ServletTupleCompareRule extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Compare";
 		String rulename = req.getParameter("RuleName");
-		String vergelijkingswaarde1 = req.getParameter("Vergelijkswaarde1");
-		String vergelijkingswaarde2 = req.getParameter("Vergelijkingswaarde2");
 		String operator = req.getParameter("Operator");
 		String columnwaarde1 = req.getParameter("ColumnWaarde1");
 		String columnwaarde2 = req.getParameter("ColumnWaarde2");
