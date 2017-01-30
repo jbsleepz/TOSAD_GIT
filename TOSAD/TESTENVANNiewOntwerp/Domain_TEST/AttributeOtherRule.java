@@ -16,10 +16,10 @@ public class AttributeOtherRule extends Attribute{
 				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" + 
 				" \nDECLARE" +
-				" \nVALUE VARCHAR2" +
+				" \nVALUE VARCHAR2;" +
 				" \nBEGIN" +
 				" \nVALUE := :NEW." + columns.get(0) + ";" +
-				" \nIF (VALUE " + operator + " " + sql + ") = FALSE" +
+				" \nIF (VALUE = " + sql + ") = FALSE" +
 				" \nTHEN " +
 				" \nRaise_Application_Error(-20000, '"+ errorMessage + "');" +
 				" \nEND IF;" +

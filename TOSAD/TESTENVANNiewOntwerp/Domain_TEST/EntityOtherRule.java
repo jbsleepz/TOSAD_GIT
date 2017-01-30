@@ -16,7 +16,7 @@ public class EntityOtherRule extends Entity{
 				" \nFOR EACH ROW" + 
 				" \nDECLARE" +
 				" \nBEGIN" +
-				" \nIF (" + columns.get(0) + " " + operator + " " + sql + ") = FALSE" +
+				" \nIF (" + columns.get(0) + " != " + sql + ")" +
 				" \nTHEN " +
 				" \nRaise_Application_Error(-20000, '" + errorMessage + "');" +
 				" \nEND IF;" +

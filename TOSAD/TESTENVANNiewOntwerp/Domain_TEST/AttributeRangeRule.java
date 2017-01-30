@@ -11,20 +11,14 @@ public class AttributeRangeRule extends Attribute {
 		super();
 	}
 	
-/*	public AttributeRangeRule(int minimumValue, int maximumValue){
-		super();
-		this.minimumValue = minimumValue;
-		this.maximumValue = maximumValue;
-	}*/
-	
 	public String generateScript(String triggerName, String operator, String errorMessage) {
 		script = "CREATE OR REPLACE TRIGGER " +"TRIGGER_" + triggerName + 
-				" \nBEFORE INSERT OR UPDATE ON " + /*super.getTables()*/ tables.get(0) + 
+				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" +
 				" \nDECLARE"+ 
-				" \nVALUE NUMBER" +
+				" \nVALUE NUMBER;" +
 				" \nBEGIN"+ 
-				" \nVALUE := :NEW." + /*super.getColumns()*/ columns.get(0) + ";" +
+				" \nVALUE := :NEW." + columns.get(0) + ";" +
 				" \nIF (VALUE NOT BETWEEN " + minimumValue + " AND " + maximumValue + ")" + 
 				" \nTHEN " + 
 				" \nRaise_Application_Error(-20000, '" + errorMessage + "');" +

@@ -15,16 +15,18 @@ public class TupleOtherRule extends Tuple{
 				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" + 
 				" \nDECLARE" +
-				" \nVALUE1 VARCHAR2" +
-				" \nVALUE2 VARCHAR2" +
+				" \nVALUE1 VARCHAR2;" +
+				" \nVALUE2 VARCHAR2;" +
 				" \nBEGIN" +
 				" \nVALUE1 := :NEW." + columns.get(0) + ";" +
 				" \nVALUE2 := :NEW." + columns.get(1) + ";" +
-				" \nFOR o in (SELECT " + columns.get(0) + " FROM " + tables.get(0) + ")" +
-				" \nIF (o = VALUE1)" +
+				" \nFOR i in (SELECT COUNT(" + columns.get(0) + ") FROM " + tables.get(0) + ")" +
+				" \nIF (i = VALUE1)" +
 				" \nTHEN " +
 				" \nIF (VALUE2 " + operator + " " + sql + ") = FALSE" +
+				" \nTHEN " +
 				" \nRaise_Application_Error(-20000, '" + errorMessage + "');" +
+				" \nEND IF;" +
 				" \nEND IF;" +
 				" \nEND;";
 		

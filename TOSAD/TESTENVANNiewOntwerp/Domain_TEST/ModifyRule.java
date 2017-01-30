@@ -14,10 +14,8 @@ public class ModifyRule extends Modify {
 				" \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				" \nFOR EACH ROW" + 
 				"DECLARE" 
-				+ plSQLquery
-				
-				+
-				"THEN"
+				+ plSQLquery 
+				+ "THEN"
 				+ "l_error_stack := l_error_stack || '" + errorMessage + "';"
 				+ "END IF;"
 				+ "END";
