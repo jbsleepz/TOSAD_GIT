@@ -1,44 +1,35 @@
 package Domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class InterEntity extends Rule{
-	private String name = "interEntity";
-	private String table1;
-	private String table2;
-	private ArrayList<String> attributesTable1;
-	private ArrayList<String> attributesTable2;
+public abstract class InterEntity {
+	
+	protected String script = "";
+	protected ArrayList<String> columns = new ArrayList<String>();
+	protected ArrayList<String> tables = new ArrayList<String>();
+	protected HashMap<String, String> columnCheckwaarde = new HashMap<String, String>();
+	
+	public abstract String generateScript(String triggerName , String operator, String errormessage);
 
-	
-	public InterEntity(){
-		
+	public void addListTables(String waarde){
+		tables.add(waarde);
 	}
-
-	public InterEntity(String table1, String table2, ArrayList<String> attributesTable1, ArrayList<String> attributesTable2){
-		this.table1 = table1;
-		this.table2 = table2;
-		this.attributesTable1 = attributesTable1;
-		this.attributesTable2 = attributesTable2;
+	public void addColumns(String waarde){
+		columns.add(waarde);
 	}
-	
-	public String getName(){
-		return name;
+	public void setColumnCheckWaarde(String column, String checkWaarde) {
+		columnCheckwaarde.put(column, checkWaarde);
 	}
-	
-	public String getTable1Name(){
-		return table1;
-	}
-	
-	public String getTable2Name(){
-		return table2;
-	}
-	
-	public ArrayList<String> getAttributesTable1(){
-		return attributesTable1;
-	}
-	
-	public ArrayList<String> getAttributesTable2(){
-		return attributesTable2;
+	public String columnCheckwaarde(String key){
+		return columnCheckwaarde.get(key);
 	}
 
+	public List<String> getTables() {
+		return tables;
+	}
+	public List<String> getColumns() {
+		return columns;
+	}
 }

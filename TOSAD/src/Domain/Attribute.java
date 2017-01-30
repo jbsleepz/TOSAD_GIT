@@ -1,31 +1,49 @@
 package Domain;
 
-public class Attribute extends Rule{
-	private String name = "attribute";
-	private String tableName;
-	private String attributeName;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public abstract class Attribute {
 	
-	public Attribute (String tableName, String attributeName){
-		super();
-		this.tableName = tableName;
-		this.attributeName = attributeName;
+	protected String script = "";
+	protected ArrayList<String> columns = new ArrayList<String>();
+	protected ArrayList<String> tables = new ArrayList<String>();
+	protected HashMap<String, String> columnCheckwaarde = new HashMap<String, String>();
+	protected ArrayList<String> waardesListValues = new ArrayList<String>();
+	
+	public Attribute(){
+		
 	}
 	
-	public String getName(){
-		return name;
+	public abstract String generateScript(String triggerName , String operator, String errormessage);
+
+	public void addListTables(String waarde){
+		tables.add(waarde);
+	}
+	public void addWaardesListRule(String waarde){
+		waardesListValues.add(waarde);
+	}
+	public void addColumns(String waarde){
+		columns.add(waarde);
+	}
+	public void setColumnCheckWaarde(String column, String checkWaarde) {
+		columnCheckwaarde.put(column, checkWaarde);
+	}
+	public String columnCheckwaarde(String key){
+		return columnCheckwaarde.get(key);
 	}
 	
-	public String  getTableName(){
-		return tableName;
-	}
 	
-	public String getAttributeName(){
-		return attributeName;
+	public List<String> getTables() {
+		return tables;
 	}
-	
-	public void setAttributes(String tableName, String attributeName){
-		this.tableName = tableName;
-		this.attributeName = attributeName;
+	public List<String> getColumns() {
+		return columns;
 	}
-	
+
+	public ArrayList<String> getWaardesList() {
+		return waardesListValues;
+	}
+
 }
