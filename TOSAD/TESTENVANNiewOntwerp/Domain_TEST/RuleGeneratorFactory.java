@@ -15,9 +15,9 @@ public class RuleGeneratorFactory {
 			attribute = new AttributeRangeRule();
 		} else if (ruleType.equalsIgnoreCase("COMPARE")) {
 			attribute = new AttributeCompareRule();
-		} else if (ruleType.equals("OTHER")) {
+		} else if (ruleType.equalsIgnoreCase("OTHER")) {
 			attribute = new AttributeOtherRule();
-		} else if (ruleType.equals("LIST")) {
+		} else if (ruleType.equalsIgnoreCase("LIST")) {
 			attribute = new AttributeListRule();
 		}
 		return attribute;
