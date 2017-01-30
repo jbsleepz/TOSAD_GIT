@@ -68,8 +68,7 @@ public class FacadeDomain {
 
 	// Roept de ruleFactory aan om voor het type Tuple Compare Rule een script
 	// te generaten.
-	public String maakScriptVoorTupleCompare(String ruleType, String businesRuleName, String vergelijkingswaarde1,
-			String vergelijkingswaarde2, String operator, String columnWaarde1, String columnWaarde2,
+	public String maakScriptVoorTupleCompare(String ruleType, String businesRuleName, String operator, String columnWaarde1, String columnWaarde2,
 			String tableWaarde1, String errorMessage) {
 		tuple = factory.makeTupleScript(ruleType);
 		tuple.addColumns(columnWaarde1);
@@ -77,8 +76,6 @@ public class FacadeDomain {
 		tuple.addListTables(tableWaarde1);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
-		tuple.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
-		tuple.setColumnCheckWaarde(columnWaarde2, vergelijkingswaarde2);
 		return tuple.generateScript(businesRule.getNaam(), operator, businesRule.getError());
 	}
 

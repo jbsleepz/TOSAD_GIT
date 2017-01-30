@@ -13,8 +13,8 @@ public class TupleCompareRule extends Tuple{
 				 " \nBEFORE INSERT OR UPDATE ON " + tables.get(0) + 
 				 " \nFOR EACH ROW" +
 				 " \nDECLARE" + 
-				 " \n" + columns.get(0) + " := "+ columnCheckwaarde.get(columns.get(0)) + " VARCHAR2;"+
-				 " \n" + columns.get(1) + " := "+ columnCheckwaarde.get(columns.get(0)) + " VARCHAR2;"+
+				 " \n" + columns.get(0) + " := "+ columns.get(0) + " VARCHAR2;"+
+				 " \n" + columns.get(1) + " := "+ columns.get(1) + " VARCHAR2;"+
 				 " \nBEGIN" +
 				 " \n" +  columns.get(0) + " := :NEW." + columns.get(0) + ";" +
 				 " \n" +  columns.get(1) + " := :NEW." + columns.get(1)+ ";" +

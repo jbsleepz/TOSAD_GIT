@@ -24,7 +24,7 @@ public class ServletTupleCompareRule extends HttpServlet {
 		String tabelwaarde = req.getParameter("TabelWaarde");
 		String error = req.getParameter("Error");
 		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.maakScriptVoorTupleCompare(ruletype, rulename, vergelijkingswaarde1, vergelijkingswaarde2, operator, columnwaarde1, columnwaarde2, tabelwaarde, error));
+		out.print(facade.maakScriptVoorTupleCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tabelwaarde, error));
 	}
 
 }
