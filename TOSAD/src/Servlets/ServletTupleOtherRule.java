@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Domain_TEST.FacadeDomain;
+import Domain.FacadeDomain;
 
 public class ServletTupleOtherRule extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
