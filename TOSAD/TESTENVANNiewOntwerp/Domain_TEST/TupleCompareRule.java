@@ -1,7 +1,5 @@
 package Domain_TEST;
 
-import java.util.ArrayList;
-
 public class TupleCompareRule extends Tuple{
 
 	public TupleCompareRule(){
