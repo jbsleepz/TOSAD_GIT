@@ -108,15 +108,14 @@ public class FacadeDomain {
 
 	// Roept de ruleFactory aan om voor het type Inter-Entity Compare Rule een script
 	// te generaten.
-	public String maakScriptVoorInterEntityCompare(String ruleType, String businesRuleName,
-			String vergelijkingswaarde1, String operator, String columnWaarde1,
+	public String maakScriptVoorInterEntityCompare(String ruleType, String businesRuleName
+			, String operator, String columnWaarde1,
 			String columnWaarde2, String tableWaarde1, String tableWaarde2, String errorMessage) {
 		inter = factory.makeInterEntityScript(ruleType);
 		inter.addColumns(columnWaarde1);
 		inter.addColumns(columnWaarde2);
 		inter.addListTables(tableWaarde1);
 		inter.addListTables(tableWaarde2);
-		inter.setColumnCheckWaarde(columnWaarde1, vergelijkingswaarde1);
 		businesRule.setNaam(businesRuleName);
 		businesRule.setError(errorMessage);
 		return inter.generateScript(businesRule.getNaam(), operator, businesRule.getError());

@@ -21,10 +21,9 @@ public class ServletInterCompareRule extends HttpServlet {
 		String tablewaarde1 = req.getParameter("TableWaarde1");
 		String tablewaarde2 = req.getParameter("TableWaarde2");
 		String operator = req.getParameter("Operator");
-		String vergelijkingswaarde1 = req.getParameter("Vergelijkingswaarde1");
 		String error = req.getParameter("Error");
 		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.maakScriptVoorInterEntityCompare(ruletype, rulename, vergelijkingswaarde1, operator, columnwaarde1, columnwaarde2, tablewaarde1, tablewaarde2, error));
+		out.print(facade.maakScriptVoorInterEntityCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tablewaarde1, tablewaarde2, error));
 	}
 
 }
