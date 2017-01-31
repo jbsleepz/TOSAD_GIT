@@ -47,13 +47,9 @@ public class FacadeDAO {
 		iecr = new DAOInterEntityCompareRule();
 		iecr.wijzigInterEntityCompareRule(waarde, ruleID);
 	}
-	public void DAOInterEntityCompareRuleOpslaanScript(String waarde, int ruleID){
-		iecr = new DAOInterEntityCompareRule();
-		iecr.wijzigInterEntityCompareRule(waarde, ruleID);
-	}
-	public void DAOModifyRuleOpslaanScript(String script){
+	public void DAOModifyRuleOpslaanScript(String script, int ruleID){
 		mod = new DAOModify();
-		mod.wijzigModifyRule(script);
+		mod.wijzigModifyRule(script, ruleID);
 	}
 	
 	public void DAOAttributeRangeRuleExecuteScript(String script){
