@@ -8,7 +8,6 @@ public class DAOAttributeRangeRule extends ConnectionConfiguration {
 
 	ConnectionConfigurationTarget target = new ConnectionConfigurationTarget();
 	ConnectionConfigurationTool tool = new ConnectionConfigurationTool();
-
 	public void wijzigAttributeRangeRule(String script, int ruleID) {
 		String query = "update ATTRIBUTERANGERULE set GENERATEDCODE = ? where RULEID = ?";
 

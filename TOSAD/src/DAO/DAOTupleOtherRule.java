@@ -8,7 +8,9 @@ public class DAOTupleOtherRule extends ConnectionConfiguration {
 
 	ConnectionConfigurationTarget target = new ConnectionConfigurationTarget();
 	ConnectionConfigurationTool tool = new ConnectionConfigurationTool();
-
+	public DAOTupleOtherRule(){
+		super();
+	}
 	public void wijzigOtherRule(String script, int ruleID) {
 		String query = "update TUPLEOTHERRULE set GENERATEDCODE = ? where RULEID = ?";
 
@@ -30,6 +32,12 @@ public class DAOTupleOtherRule extends ConnectionConfiguration {
 		String query = "?";
 		//String DB_DRIV,String DB_URL,String DB_USER,String DB_PASS 
 		try (Connection conn = super.getConnection(target.getDbDriv(), target.getDbUrl(), target.getDbUser(), target.getDbPass())){
+			System.out.println(conn);
+			System.out.println(query);
+			System.out.println(target.getDbDriv());
+			System.out.println(target.getDbPass());
+			System.out.println(target.getDbUrl());
+			System.out.println(target.getDbUser());
 			PreparedStatement ps = conn.prepareStatement(query);
 			
 			ps.setString(1, script);
