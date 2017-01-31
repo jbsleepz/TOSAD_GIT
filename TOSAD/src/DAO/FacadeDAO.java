@@ -9,6 +9,7 @@ public class FacadeDAO {
 	DAOTupleOtherRule totr = null;
 	DAOEntityOtherRule enor = null;
 	DAOInterEntityCompareRule iecr = null;
+	DAOModify mod = null;
 	
 	
 	public void DAOAttributeRangeRuleOpslaanScript(String waarde, int ruleID){
@@ -46,6 +47,14 @@ public class FacadeDAO {
 		iecr = new DAOInterEntityCompareRule();
 		iecr.wijzigInterEntityCompareRule(waarde, ruleID);
 	}
+	public void DAOInterEntityCompareRuleOpslaanScript(String waarde, int ruleID){
+		iecr = new DAOInterEntityCompareRule();
+		iecr.wijzigInterEntityCompareRule(waarde, ruleID);
+	}
+	public void DAOModifyRuleOpslaanScript(String script){
+		mod = new DAOModify();
+		mod.wijzigModifyRule(script);
+	}
 	
 	public void DAOAttributeRangeRuleExecuteScript(String script){
 		arng = new DAOAttributeRangeRule();
@@ -81,6 +90,10 @@ public class FacadeDAO {
 	public void DAOInterEntityCompareRuleExecuteScript(String script){
 		iecr = new DAOInterEntityCompareRule();
 		iecr.ExecuteScriptNaarTarget(script);
+	}
+	public void DAOModifyRuleExecuteScript(String script){
+		mod = new DAOModify();
+		mod.ExecuteScriptNaarTarget(script);
 	}
 	
 
