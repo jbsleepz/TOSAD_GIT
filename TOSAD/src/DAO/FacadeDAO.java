@@ -66,19 +66,19 @@ public class FacadeDAO {
 		aotr = new DAOAttributeOtherRule();
 		aotr.ExecuteScriptNaarTarget(script);
 	}
-	public void DAOTupleCompareRuleOpslaanScript(String script){
+	public void DAOTupleCompareRuleExecuteScript(String script){
 		tucr = new DAOTupleCompareRule();
 		tucr.ExecuteScriptNaarTarget(script);
 	}
-	public void DAOTupleOtherRuleOpslaanScript(String script){
+	public void DAOTupleOtherRuleExecuteScript(String script){
 		totr = new DAOTupleOtherRule();
 		totr.ExecuteScriptNaarTarget(script);
 	}
-	public void DAOEntityOtherRuleOpslaanScript(String script){
+	public void DAOEntityOtherRuleExecuteScript(String script){
 		enor = new DAOEntityOtherRule();
 		enor.ExecuteScriptNaarTarget(script);
 	}
-	public void DAOInterEntityCompareRuleOpslaanScript(String script){
+	public void DAOInterEntityCompareRuleExecuteScript(String script){
 		iecr = new DAOInterEntityCompareRule();
 		iecr.ExecuteScriptNaarTarget(script);
 	}
