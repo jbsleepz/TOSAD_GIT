@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.FacadeDAO;
 import Domain.FacadeDomain;
 
 public class ServletInterCompareRule extends HttpServlet {
+	
+	FacadeDomain facadeDomain = null;
+	FacadeDAO facadeDAO = null;
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
+		String buttonWaarde = req.getParameter("waardeButton");
+		if(buttonWaarde.equals("Execute")){
+			facadeDAO = new FacadeDAO();
+		}
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Compare";
 		String rulename = req.getParameter("RuleName");
@@ -22,8 +31,8 @@ public class ServletInterCompareRule extends HttpServlet {
 		String tablewaarde2 = req.getParameter("TableWaarde2");
 		String operator = req.getParameter("Operator");
 		String error = req.getParameter("Error");
-		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.maakScriptVoorInterEntityCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tablewaarde1, tablewaarde2, error));
+		facadeDomain = new FacadeDomain();
+		out.print(facadeDomain.maakScriptVoorInterEntityCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tablewaarde1, tablewaarde2, error));
 	}
 
 }

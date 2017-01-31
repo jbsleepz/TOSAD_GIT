@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.FacadeDAO;
 import Domain.FacadeDomain;
 
 public class ServletEntityOtherRule extends HttpServlet {
+	
+	FacadeDomain facadeDomain = null;
+	FacadeDAO facadeDAO = null;
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
+		String buttonWaarde = req.getParameter("waardeButton");
+		if(buttonWaarde.equals("Execute")){
+			facadeDAO = new FacadeDAO();
+		}
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Other";
 		String rulename = req.getParameter("RuleName");
@@ -21,8 +30,8 @@ public class ServletEntityOtherRule extends HttpServlet {
 		String columnwaarde1 = req.getParameter("ColumnWaarde1");
 		String tablewaarde1 = req.getParameter("TableWaarde1");
 		String error = req.getParameter("Error");
-		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.maakScriptVoorEntityOther(ruletype, sqlquery, rulename, operator, columnwaarde1, tablewaarde1, error));
+		facadeDomain = new FacadeDomain();
+		out.print(facadeDomain.maakScriptVoorEntityOther(ruletype, sqlquery, rulename, operator, columnwaarde1, tablewaarde1, error));
 	}
 
 }

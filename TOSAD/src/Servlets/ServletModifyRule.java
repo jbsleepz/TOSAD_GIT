@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.FacadeDAO;
 import Domain.FacadeDomain;
 
 public class ServletModifyRule extends HttpServlet {
+	
+	FacadeDomain facadeDomain = null;
+	FacadeDAO facadeDAO = null;
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
+		String buttonWaarde = req.getParameter("waardeButton");
+		if(buttonWaarde.equals("Execute")){
+			facadeDAO = new FacadeDAO();
+		}
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Modify";
 		String rulename = req.getParameter("BusinessruleName");
@@ -23,8 +32,8 @@ public class ServletModifyRule extends HttpServlet {
 		String targetcolumn_2 = req.getParameter("TargetColumn_2");
 		String operator = req.getParameter("Operator");
 		String checkwaarde = req.getParameter("CheckWaarde");
-		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.maakScriptVoorModifyRule(ruletype, operator, rulename, tablename1, tablename2, targetcolumn_1, targetcolumn_2, checkwaarde, errormessage));
+		facadeDomain = new FacadeDomain();
+		out.print(facadeDomain.maakScriptVoorModifyRule(ruletype, operator, rulename, tablename1, tablename2, targetcolumn_1, targetcolumn_2, checkwaarde, errormessage));
 	}
 
 }

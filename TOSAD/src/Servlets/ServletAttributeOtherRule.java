@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.FacadeDAO;
 import Domain.FacadeDomain;
 
 public class ServletAttributeOtherRule extends HttpServlet {
+	
+	FacadeDomain facadeDomain = null;
+	FacadeDAO facadeDAO = null;
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
+		String buttonWaarde = req.getParameter("waardeButton");
+		if(buttonWaarde.equals("Execute")){
+			facadeDAO = new FacadeDAO();
+		}
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Other";
 		String rulename = req.getParameter("RuleName");
@@ -21,8 +30,8 @@ public class ServletAttributeOtherRule extends HttpServlet {
 		String column = req.getParameter("Column");
 		String table = req.getParameter("Table");
 		String errormessage = req.getParameter("ErrorMessage");
-		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.MaaktScriptVoorAttributeOther(ruletype, rulename, sqlquery, operator, column, table, errormessage));
+		facadeDomain = new FacadeDomain();
+		out.print(facadeDomain.MaaktScriptVoorAttributeOther(ruletype, rulename, sqlquery, operator, column, table, errormessage));
 	}
 
 }

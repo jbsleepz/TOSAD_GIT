@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.FacadeDAO;
 import Domain.FacadeDomain;
 
 public class ServletTupleCompareRule extends HttpServlet {
+	
+	FacadeDomain facadeDomain = null;
+	FacadeDAO facadeDAO = null;
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
+		String buttonWaarde = req.getParameter("waardeButton");
+		if(buttonWaarde.equals("Execute")){
+			facadeDAO = new FacadeDAO();
+		}
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Compare";
 		String rulename = req.getParameter("RuleName");
@@ -21,8 +30,8 @@ public class ServletTupleCompareRule extends HttpServlet {
 		String columnwaarde2 = req.getParameter("ColumnWaarde2");
 		String tabelwaarde = req.getParameter("TabelWaarde");
 		String error = req.getParameter("Error");
-		FacadeDomain facade = new FacadeDomain();
-		out.print(facade.maakScriptVoorTupleCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tabelwaarde, error));
+		facadeDomain = new FacadeDomain();
+		out.print(facadeDomain.maakScriptVoorTupleCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tabelwaarde, error));
 	}
 
 }
