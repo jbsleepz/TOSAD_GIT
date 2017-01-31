@@ -18,10 +18,12 @@ public class ServletModifyRule extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
-		String buttonWaarde = req.getParameter("waardeButton");
+		String buttonWaarde = req.getParameter("Button");
 		if(buttonWaarde.equals("Execute")){
 			facadeDAO = new FacadeDAO();
-		}
+			String script = req.getParameter("Code");
+			facadeDAO.DAOModifyRuleExecuteScript(script);
+		}else{
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Modify";
 		String rulename = req.getParameter("BusinessruleName");
@@ -35,5 +37,5 @@ public class ServletModifyRule extends HttpServlet {
 		facadeDomain = new FacadeDomain();
 		out.print(facadeDomain.maakScriptVoorModifyRule(ruletype, operator, rulename, tablename1, tablename2, targetcolumn_1, targetcolumn_2, checkwaarde, errormessage));
 	}
-
+	}
 }

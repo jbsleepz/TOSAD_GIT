@@ -17,10 +17,12 @@ public class ServletAttributeCompareRule extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
-		String buttonWaarde = req.getParameter("waardeButton");
+		String buttonWaarde = req.getParameter("Button");
 		if(buttonWaarde.equals("Execute")){
 			facadeDAO = new FacadeDAO();
-		}
+			String script = req.getParameter("Code");
+			facadeDAO.DAOAttributeCompareRuleExecuteScript(script);
+		}else{
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Compare";
 		String rulename = req.getParameter("RuleName");
@@ -33,5 +35,5 @@ public class ServletAttributeCompareRule extends HttpServlet {
 		out.print(facadeDomain.MaaktScriptVoorAttributeCompare(ruletype, rulename, vergelijkingswaarde, operator, column, table, error));
 		
 	}
-
+	}
 }

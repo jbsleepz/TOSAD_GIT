@@ -18,10 +18,12 @@ public class ServletAttributeListRule extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
-		String buttonWaarde = req.getParameter("waardeButton");
+		String buttonWaarde = req.getParameter("Button");
 		if(buttonWaarde.equals("Execute")){
 			facadeDAO = new FacadeDAO();
-		}
+			String script = req.getParameter("Code");
+			facadeDAO.DAOAttributeListRuleExecuteScript(script);
+		}else{
 		PrintWriter out = resp.getWriter();
 		String ruletype = "List";
 		String rulename = req.getParameter("RuleName");
@@ -34,5 +36,5 @@ public class ServletAttributeListRule extends HttpServlet {
 		facadeDomain = new FacadeDomain();
 		out.print(facadeDomain.MaaktScriptVoorAttributeList(ruletype, rulename, ColumnWaarde, tablewaarde, list, errormessage));
 	}
-
+	}
 }

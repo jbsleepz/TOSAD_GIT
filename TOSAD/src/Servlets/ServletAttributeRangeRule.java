@@ -15,15 +15,21 @@ public class ServletAttributeRangeRule extends HttpServlet {
 	
 	FacadeDomain facadeDomain = null;
 	FacadeDAO facadeDAO = null;
-	
+	String response;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
-		String buttonWaarde = req.getParameter("waardeButton");
-		if(buttonWaarde.equals("Execute")){
-			facadeDAO = new FacadeDAO();
-		}
 		PrintWriter out = resp.getWriter();
+		String buttonWaarde = req.getParameter("Button");
+		System.out.println(buttonWaarde);
+		if(buttonWaarde == null){
+			System.out.println(2);
+			facadeDAO = new FacadeDAO();
+			String script = req.getParameter("Code");
+			facadeDAO.DAOAttributeRangeRuleExecuteScript(script);
+			response = "yay";
+		}else{
 		String ruletype = "Range";
+		System.out.println(3);
 		int minvalue = Integer.parseInt(req.getParameter("MinValue"));
 		int maxvalue = Integer.parseInt(req.getParameter("MaxValue"));
 		String rulename = req.getParameter("RuleName");
@@ -31,9 +37,10 @@ public class ServletAttributeRangeRule extends HttpServlet {
 		String columnname = req.getParameter("ColumnName");
 		String error = req.getParameter("Error");
 		facadeDomain = new FacadeDomain();
-		String yay = facadeDomain.MaakScriptVoorAttributeRange(ruletype, rulename, columnname, tablename, minvalue, maxvalue, error);
-		out.print(yay);
+		response = facadeDomain.MaakScriptVoorAttributeRange(ruletype, rulename, columnname, tablename, minvalue, maxvalue, error);
 		
 	}
-
+		System.out.println(4);
+		out.print(response);
+	}
 }

@@ -18,10 +18,12 @@ public class ServletAttributeOtherRule extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
-		String buttonWaarde = req.getParameter("waardeButton");
+		String buttonWaarde = req.getParameter("Button");
 		if(buttonWaarde.equals("Execute")){
 			facadeDAO = new FacadeDAO();
-		}
+			String script = req.getParameter("Code");
+			facadeDAO.DAOAttributeOtherRuleExecuteScript(script);
+		}else{
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Other";
 		String rulename = req.getParameter("RuleName");
@@ -33,5 +35,5 @@ public class ServletAttributeOtherRule extends HttpServlet {
 		facadeDomain = new FacadeDomain();
 		out.print(facadeDomain.MaaktScriptVoorAttributeOther(ruletype, rulename, sqlquery, operator, column, table, errormessage));
 	}
-
+	}
 }

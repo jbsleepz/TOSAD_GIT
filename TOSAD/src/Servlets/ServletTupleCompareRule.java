@@ -18,10 +18,12 @@ public class ServletTupleCompareRule extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws ServletException, IOException {
-		String buttonWaarde = req.getParameter("waardeButton");
+		String buttonWaarde = req.getParameter("Button");
 		if(buttonWaarde.equals("Execute")){
 			facadeDAO = new FacadeDAO();
-		}
+			String script = req.getParameter("Code");
+			facadeDAO.DAOTupleCompareRuleExecuteScript(script);
+		}else{
 		PrintWriter out = resp.getWriter();
 		String ruletype = "Compare";
 		String rulename = req.getParameter("RuleName");
@@ -33,5 +35,5 @@ public class ServletTupleCompareRule extends HttpServlet {
 		facadeDomain = new FacadeDomain();
 		out.print(facadeDomain.maakScriptVoorTupleCompare(ruletype, rulename, operator, columnwaarde1, columnwaarde2, tabelwaarde, error));
 	}
-
+	}
 }
